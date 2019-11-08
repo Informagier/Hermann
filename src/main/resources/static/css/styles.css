@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS DOCUMENT*/
+body{
+    padding: 20px;
+    font-family: 'Roboto',sans-serif;
+    background-color:#383838;
+    color: white;
+}
+h1{
+    font-family: 'Times New Roman',serif;
+    text-align: center;
+    font-size: 3em;
+    color: orange;
+    padding: 20px 0 20px 0;
+
+}
+.about{
+    border-style: solid;
+    border-color: orange;
+    margin-bottom: 2em;
+}
+.aboutText{
+    word-break: break-word;
+    text-align: center;
+    width: 60%;
+    margin: 0 20% 0 20%;
+    font-size: 1.5em;
+}
+.date{
+    margin-left: 0em;
+    margin-top: 2em;
+    background-color: orange;
+    color: #383838;
+    width: 9em;
+    font-size: 1.5em;
+    text-align: right;
+}
+.goals{
+    margin-top: 2em;
+    border-style: solid;
+    border-color: dodgerblue;
+}
+#goals{
+    color: #1e90ff;
+    font-family: 'Times New Roman',serif;
+    text-align: center;
+    font-size: 3em;
+
+}
+ol{
+    width: 60%;
+    margin: 0 20% 0 20%;
+    color: white;
+    padding: 0.5em 0 0.5em 0;
+    font-size: 1.5em;
+}
+.personas{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-style: solid;
+    border-color: #ff3300;
+    height:auto;
+    overflow: hidden;
+}
+.personaWrapper{
+    width: 80%;
+    margin: 0 10% 1% 10%;
+    height:auto;
+    overflow: hidden;
+
+}
+#personaHeading{
+    color: #ff3300;
+    font-family: 'Times New Roman',serif;
+    text-align: center;
+    font-size: 3em;
+}
+#markoMorgano{
+    margin-left: 0em;
+    margin-top: 2em;
+    background-color: #ff3300;
+    color: #383838;
+    width: 9em;
+    font-size: 2em;
+    text-align: right;
+}
+.personaText{
+    float:left;
+    padding:1%;
+    background-color: #262626;
+    font-size: 1em;
+    width:60%;
+
+}
+.markImage{
+    width: 30%;
+    padding-left: 5%;
+    height:auto;
+    overflow:hidden;
+}
+.markImage img{
+    width: 100%;
+    height:auto;
+}
+#jennifer{
+    margin-left: 0em;
+    margin-top: 2em;
+    background-color: #ff3300;
+    color: #383838;
+    width: 9em;
+    font-size: 2em;
+    text-align: right;
+}

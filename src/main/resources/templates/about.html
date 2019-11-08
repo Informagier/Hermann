@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+</head>
+<body>
+<div class ="about">
+    <div class="date"><strong th:text="${#temporals.format(localDateTime, 'dd/MMM/yyyy HH:mm')}">31/12/2015 15:00</strong>
+    </div>
+<h1>About us:</h1>
+    <div class="aboutText">
+<p>We are Damian, Dominik and Jenny, three computer science students at HTW.
+Our project is a website for creating a better connection in the e-Sports community of Berlin</p>
+    </div>
+</div>
+<div class="goals">
+    <div id="goals">
+<h3>Goals</h3>
+    </div>
+
+<ol>
+    <li>Improve communication and connections in-/between the different eSport 	clubs in cities
+    </li>
+    <li>Make eSport clubs more approachable</li>
+    <li>Support (event) planning processes
+    </li>
+</ol>
+</div>
+<div class="personas">
+<h3 id="personaHeading">User Personas</h3>
+<h4 id="markoMorgano">Marko Morgano</h4>
+    <div class="personaWrapper">
+    <div class="personaText">
+<ul>
+    <li>Demographic</li>
+    <ul>
+        <li>around 25 years old</li>
+        <li>participant in the e-Sport initiative of the HTW-Berlin</li>
+        <li>lives in berlin</li>
+        <li>works as an IT-guy</li>
+        <li>lives with his girlfriend</li>
+        <li>earns a little bit of money</li>
+    </ul>
+    <li>Habits</li>
+    <ul>
+        <li>plays video games</li>
+        <li>manages e-Sport initiative</li>
+        <li>LARP</li>
+        <li>studies IT</li>
+        <li>communicates with other e-Sport clubs in berlin</li>
+        <li>recognizeable because beard and big black coat and long hair and boots</li>
+
+    </ul>
+    <li>Goals</li>
+    <ul>
+        <li>recognition/success of e-Sports in a university context</li>
+        <li>more e-Sport Clubs in Berlin</li>
+        <li>a network between the e-Sports clubs of universities in Berlin</li>
+    </ul>
+    <li>Needs</li>
+    <ul>
+        <li>better communication within the initiative</li>
+    </ul>
+    <li>Real People Examples</li>
+    <ul>
+        <li>Mark Morgan</li>
+    </ul>
+</ul>
+    </div>
+    <div class="markImage">
+        <img th:src="@{/images/mark.png}" alt="marko morgano"/>
+    </div>
+    </div>
+    <h4 id="jennifer"> Jennifer</h4>
+    <div class="personaWrapper">
+        <div class="personaText">
+            <ul>
+                <li>Demographic</li>
+                <ul>
+                    <li>around 22 years old</li>
+                    <li>student at HTW-Bärlin</li>
+                    <li>lives in berlin</li>
+                    <li>works sometimes</li>
+                    <li>lives with her boyfriend</li>
+                    <li>earns a little bit of money</li>
+                </ul>
+                <li>Habits</li>
+                <ul>
+                    <li>plays computer games</li>
+                    <li>studies IT</li>
+                    <li>likes to read</li>
+                    <li>does archery</li>
+                    <li>recognizeable by knitting in lectures</li>
+                </ul>
+                <li>Goals</li>
+                <ul>
+                    <li>enjoy playing computer</li>
+                    <li>find out more about eSports</li>
+                </ul>
+                <li>Needs</li>
+                <ul>
+                    <li>a source of information about eSports</li>
+                </ul>
+                <li>Real People Examples</li>
+                <ul>
+                    <li>Jenny Illbruck</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="markImage">
+            <img th:src="@{/images/me.jpg}" alt="jennifer"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
