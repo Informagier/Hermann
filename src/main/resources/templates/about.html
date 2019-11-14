@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>About</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
     <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+
+
 </head>
 <body>
-<div class ="about">
+<div class ="container" id="about">
     <div class="date"><strong th:text="${#temporals.format(localDateTime, 'dd/MMM/yyyy HH:mm')}">31/12/2015 15:00</strong>
     </div>
 <h1>About us:</h1>
@@ -15,11 +19,8 @@
 Our project is a website for creating a better connection in the e-Sports community of Berlin</p>
     </div>
 </div>
-<div class="goals">
-    <div id="goals">
-<h3>Goals</h3>
-    </div>
-
+<div class="container" id="goals">
+<h1 id="goalsHeading">Goals</h1>
 <ol>
     <li>Improve communication and connections in-/between the different eSport 	clubs in cities
     </li>
@@ -28,54 +29,60 @@ Our project is a website for creating a better connection in the e-Sports commun
     </li>
 </ol>
 </div>
-<div class="personas">
-<h3 id="personaHeading">User Personas</h3>
+<div class="container" id="personaContainer">
+<h1 id="personaHeading">User Personas</h1>
 <h4 id="markoMorgano">Marko Morgano</h4>
-    <div class="personaWrapper">
-    <div class="personaText">
-<ul>
-    <li>Demographic</li>
-    <ul>
-        <li>around 25 years old</li>
-        <li>participant in the e-Sport initiative of the HTW-Berlin</li>
-        <li>lives in berlin</li>
-        <li>works as an IT-guy</li>
-        <li>lives with his girlfriend</li>
-        <li>earns a little bit of money</li>
-    </ul>
-    <li>Habits</li>
-    <ul>
-        <li>plays video games</li>
-        <li>manages e-Sport initiative</li>
-        <li>LARP</li>
-        <li>studies IT</li>
-        <li>communicates with other e-Sport clubs in berlin</li>
-        <li>recognizeable because beard and big black coat and long hair and boots</li>
+    <div class="container">
+        <div class="personaRow">
+        <div class="row" id="personaRow">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                <ul class="personaList">
+                    <li >Demographic</li>
+                    <ul>
+                        <li>around 25 years old</li>
+                        <li>participant in the e-Sport initiative of the HTW-Berlin</li>
+                        <li>lives in berlin</li>
+                        <li>works as an IT-guy</li>
+                        <li>lives with his girlfriend</li>
+                        <li>earns a little bit of money</li>
+                    </ul>
+                    <li>Habits</li>
+                    <ul>
+                        <li>plays video games</li>
+                        <li>manages e-Sport initiative</li>
+                        <li>LARP</li>
+                        <li>studies IT</li>
+                        <li>communicates with other e-Sport clubs in berlin</li>
+                        <li>recognizeable because beard and big black coat and long hair and boots</li>
 
-    </ul>
-    <li>Goals</li>
-    <ul>
-        <li>recognition/success of e-Sports in a university context</li>
-        <li>more e-Sport Clubs in Berlin</li>
-        <li>a network between the e-Sports clubs of universities in Berlin</li>
-    </ul>
-    <li>Needs</li>
-    <ul>
-        <li>better communication within the initiative</li>
-    </ul>
-    <li>Real People Examples</li>
-    <ul>
-        <li>Mark Morgan</li>
-    </ul>
-</ul>
-    </div>
-    <div class="markImage">
-        <img th:src="@{/images/mark.png}" alt="marko morgano"/>
+                    </ul>
+                    <li>Goals</li>
+                    <ul>
+                        <li>recognition/success of e-Sports in a university context</li>
+                        <li>more e-Sport Clubs in Berlin</li>
+                        <li>a network between the e-Sports clubs of universities in Berlin</li>
+                    </ul>
+                    <li>Needs</li>
+                    <ul>
+                        <li>better communication within the initiative</li>
+                    </ul>
+                    <li>Real People Examples</li>
+                    <ul>
+                        <li>Mark Morgan</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-sm-12 col-xs-12">
+                <img th:src="@{/images/mark.png}" class="img-responsive" alt="marko morgano"/>
+            </div>
+        </div>
     </div>
     </div>
     <h4 id="jennifer"> Jennifer</h4>
-    <div class="personaWrapper">
-        <div class="personaText">
+    <div class="container">
+        <div class="personaRow">
+        <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <ul>
                 <li>Demographic</li>
                 <ul>
@@ -109,10 +116,22 @@ Our project is a website for creating a better connection in the e-Sports commun
                 </ul>
             </ul>
         </div>
-        <div class="markImage">
-            <img th:src="@{/images/me.jpg}" alt="jennifer"/>
+        <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-sm-11 col-xs-12">
+            <img th:src="@{/images/me.jpg}" class="img-responsive" alt="jennifer"/>
         </div>
     </div>
+    </div>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>
