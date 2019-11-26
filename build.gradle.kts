@@ -6,6 +6,13 @@ plugins {
 	kotlin("jvm") version "1.3.50"
 	kotlin("plugin.spring") version "1.3.50"
 	kotlin("plugin.jpa") version "1.3.50"
+	kotlin("plugin.allopen") version "1.3.50"
+}
+
+allOpen {
+  annotation("javax.persistence.Entity")
+  annotation("javax.persistence.Embeddable")
+  annotation("javax.persistence.MappedSuperclass")
 }
 
 group = "de.htwesports"
@@ -24,10 +31,15 @@ repositories {
 }
 
 dependencies {
+	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.4.1")
+	implementation("org.passay:passay:1.5.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.webjars:bootstrap:4.3.1")
+	implementation("org.webjars:jquery:3.4.1")
+	implementation("org.webjars:popper.js:1.15.0")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
