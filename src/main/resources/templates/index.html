@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+    <head>
+        <title th:text="${title}">Home</title>
+    </head>
+    <body>
+        <main layout:fragment="content">
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Together WeSports</h1>
+                <p class="lead">This networking platform aims to connect eSports clubs and gamers across the cities.</p>
+                <hr class="my-4">
+                <p>We are three students who love gaming and want to support the eSports community to grow.</p>
+                <a class="btn btn-primary btn-lg" href="/about" role="button">About us</a>
+            </div>
+        </main>
+    </body>
+</html>
