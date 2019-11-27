@@ -36,5 +36,5 @@ class User(var email: String = "", var password: String = "") {
                 inverseJoinColumns = [JoinColumn(
                         name = "role_id", referencedColumnName = "id")])
 
-        private var roles: MutableCollection<Role>? = null
+        lateinit var roles: MutableCollection<Role>
 }

@@ -10,18 +10,16 @@ import javax.persistence.GeneratedValue
 
 
 @Entity
-class Role {
+class Role (var name: String){
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private var id: Long? = null
-
-    private var name: String? = null
+    var id: Long = 0L
 
     @ManyToMany(mappedBy = "roles")
 
-    private var users: MutableCollection<User>? = null
+    lateinit var users: MutableCollection<User>
 
     @ManyToMany
     @JoinTable(name = "roles_privileges", joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")], inverseJoinColumns = [JoinColumn(name = "privilege_id", referencedColumnName = "id")])
-    private var privileges: MutableCollection<Privilege>? = null
+    lateinit var privileges: MutableCollection<Privilege>
 }

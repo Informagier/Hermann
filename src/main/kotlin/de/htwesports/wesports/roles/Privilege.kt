@@ -4,15 +4,13 @@ import javax.persistence.*
 
 
 @Entity
-class Privilege {
+class Privilege (var name : String){
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private var id: Long? = null
-
-    private var name: String? = null
+    var id: Long = 0
 
     @ManyToMany(mappedBy = "privileges")
 
-    private var roles: MutableCollection<Role>? = null
+    lateinit var roles: MutableCollection<Role>
 }
