@@ -1,11 +1,10 @@
 package de.htwesports.wesports.users
 
+import de.htwesports.wesports.roles.Role
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import java.util.Objects
+import javax.persistence.*
 
 @Entity
 @Table(name = "users")
@@ -26,9 +25,16 @@ class User(var email: String = "", var password: String = "") {
         }
 
         override fun hashCode(): Int {
-                var result = email.hashCode()
-                result = 31 * result + password.hashCode()
-                result = 31 * result + id.hashCode()
-                return result
+                return Objects.hash(email, password, id)
         }
+
+        @ManyToMany
+        @JoinTable(
+                name = "users_roles",
+                joinColumns = [JoinColumn(
+                        name = "user_id", referencedColumnName = "id")],
+                inverseJoinColumns = [JoinColumn(
+                        name = "role_id", referencedColumnName = "id")])
+
+        private var roles: MutableCollection<Role>? = null
 }
