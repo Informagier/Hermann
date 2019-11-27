@@ -32,16 +32,17 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
                 .antMatchers("/h2-console/**").permitAll() // only local
-                .antMatchers("/*").permitAll()
-                .antMatchers("/**").hasRole("USER")
+                .antMatchers("/webjars/**").permitAll() // bootystrap
+                .antMatchers("/js/**").permitAll() //javascript
+                .antMatchers("/dist/**").permitAll() //javascript dependencies
+                .antMatchers("/css/**").permitAll() // css
+                .antMatchers("/images/public/**").permitAll() // public images
+                .antMatchers("/*").permitAll() //allow everything on root
+                .anyRequest().authenticated()
                 .and()
 
                 .formLogin()
-                .loginPage("/login")
-                .successForwardUrl("/index")
-                .failureForwardUrl("/login")
                 .and()
 
                 .httpBasic()
