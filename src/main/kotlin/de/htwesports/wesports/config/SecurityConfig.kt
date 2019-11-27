@@ -1,5 +1,6 @@
 package de.htwesports.wesports.config
 
+import de.htwesports.wesports.users.UserDetailsServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider
+import org.springframework.security.core.userdetails.UserDetails
 
 @Configuration
 @EnableWebSecurity
@@ -30,11 +32,24 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/h2-console/**").permitAll() // only local
                 .antMatchers("/*").permitAll()
-                .antMatchers("/h2-console/**").permitAll().and()
-                .formLogin().and()
-                .httpBasic().and()
-                .headers().frameOptions().disable()
+                .antMatchers("/**").hasRole("USER")
+                .and()
+
+                .formLogin()
+                .loginPage("/login")
+                .successForwardUrl("/index")
+                .failureForwardUrl("/login")
+                .and()
+
+                .httpBasic()
+                .and()
+
+                .headers()
+                .frameOptions()
+                .disable()
     }
 
     @Bean
