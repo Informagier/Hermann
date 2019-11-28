@@ -3,8 +3,8 @@
 body{
     /*padding: 20px;*/
     font-family: 'Roboto',sans-serif;
-    background-color:#383838;
-    color: white;
+    background-color:white;
+    color: black;
 }
 
 #about{
@@ -17,17 +17,17 @@ body{
 .aboutText{
     word-break: break-word;
     text-align: center;
-    color:white;
+    color:black;
     width: 60%;
     margin: 3% 20% 3% 20%;
     font-size: 1.5em;
 }
 .date{
-    margin-left: -0.65em;
+    margin-left: -0.72em;
     margin-top: 2em;
     background-color: orange;
-    color: #383838;
-    width: 9em;
+    color: black;
+    width: 9.5em;
     font-size: 1.5em;
     text-align: right;
 }
@@ -35,17 +35,16 @@ body{
     text-align: center;
     border-style: solid;
     margin-bottom: 2em;
-    color:dodgerblue;
     border-color: dodgerblue;
 }
 #goalsHeading{
     margin-top: 3%;
+    color:dodgerblue;
 }
 ol{
     text-align: left;
     width: 60%;
     margin: 0 20% 0 20%;
-    color: white;
     padding: 0.5em 0 0.5em 0;
     font-size: 1.5em;
 }
@@ -82,7 +81,6 @@ ol{
     margin-left: -0.56em;
     margin-top: 2em;
     background-color: #ff3300;
-    color: #383838;
     width: 9em;
     font-size: 2em;
     text-align: right;
@@ -141,7 +139,6 @@ ol{
 }
 .profile-links a{
     text-decoration: none;
-    color: #e6e6e6;
     font-weight: 600;
     font-size: 14px;
 }
@@ -154,6 +151,9 @@ ol{
 .profile-tab p{
     font-weight: 600;
     color: #0062cc;
+}
+#headingCont{
+    text-align: center;
 }
 
 

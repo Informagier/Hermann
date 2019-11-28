@@ -1,6 +1,7 @@
 package de.htwesports.wesports.users
 
 import de.htwesports.wesports.errors.UserAlreadyExistsException
+import de.htwesports.wesports.profile.Profile
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional
@@ -21,7 +22,9 @@ class UserServiceImpl : UserService {
         if (emailExists(accountDto.email)) {
             throw UserAlreadyExistsException("There is an account with that email address: " + accountDto.email)
         }
-        val user = User(accountDto.email, passwordEncoder.encode(accountDto.password))
+        var profile= Profile()
+        profile.username= accountDto.username
+        val user = User(accountDto.email, passwordEncoder.encode(accountDto.password), profile)
         return userRepository.save(user)
     }
 

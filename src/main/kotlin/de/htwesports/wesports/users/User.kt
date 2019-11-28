@@ -1,20 +1,24 @@
 package de.htwesports.wesports.users
 
+import de.htwesports.wesports.profile.Profile
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "users")
-class User(var email: String = "", var password: String = "") {
+class User(var email: String = "",
+           var password: String = "",
+           @OneToOne(cascade =  arrayOf(CascadeType.ALL))
+           @JoinColumn(name = "profile_id", referencedColumnName = "profileid")
+           var profile: Profile? = null) {
 
         @Id
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "uuid2")
         var id: String = UUID.randomUUID().toString()
+
+
 
         override fun equals(other: Any?): Boolean {
                 if (this === other) return true

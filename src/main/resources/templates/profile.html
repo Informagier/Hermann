@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
@@ -9,24 +12,24 @@
 
 </head>
 <body>
+<main layout:fragment="content">
 <div class="container profile-container">
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img">
-                <img th:src="@{/images/mark.png}" class="img-responsive" alt="marko"/>
+                <img th:src="@{/images/profile.png}" class="img-responsive" alt="profile picture"/>
             </div>
         </div>
         <div class="col-md-6">
             <div class="profile-head">
-                <h2>
-                    Marko Morgano
-                </h2>
+                <h2 th:text="${Profile.username}"></h2>
                 <p class="experience">E-sports Experience : <span>Dragonslayer</span></p>
-
             </div>
         </div>
         <div class="col-md-2">
-            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+            <form th:action="@{/edit/{path}(path=${Profile.uri})}">
+                <button type="submit" id="edit">Edit Profile</button>
+            </form>
         </div>
     </div>
     <div class="row">
@@ -56,7 +59,7 @@
                             <label>Favorite games</label>
                         </div>
                         <div class="col-md-6">
-                            <p>Skyrim, Dark Souls</p>
+                            <p th:text="${Profile.game}"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -64,7 +67,7 @@
                             <label>Favourite Genre</label>
                         </div>
                         <div class="col-md-6">
-                            <p>RPG</p>
+                            <p th:text="${Profile.genre}">RPG</p>
                         </div>
                     </div>
                     <div class="row">
@@ -72,7 +75,7 @@
                             <label>Started doing e-sports</label>
                         </div>
                         <div class="col-md-6">
-                            <p>2012</p>
+                            <p th:text="${Profile.date}">2012</p>
                         </div>
                     </div>
                     <div class="row">
@@ -80,7 +83,7 @@
                             <label>Lives in</label>
                         </div>
                         <div class="col-md-6">
-                            <p>Berlin</p>
+                            <p th:text="${Profile.city}">Berlin</p>
                         </div>
                     </div>
                     <div class="row">
@@ -88,7 +91,7 @@
                             <label>Hobbies</label>
                         </div>
                         <div class="col-md-6">
-                            <p>LARP, Gaming</p>
+                            <p th:text="${Profile.hobby}">Berlin</p>
                         </div>
                     </div>
                 </div>
@@ -102,5 +105,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</main>
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit your Profile</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
+
+
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/{path}(path=${profile.uri})}" th:object="${profile}" method="POST" enctype="utf8">
+        <div class="form-group">
+            <label>Favorite game</label>
+            <input th:field="*{game}" placeholder="Enter your favorite game">
+        </div>
+        <div class="form-group">
+            <label>Favorite genre</label>
+            <input th:field="*{genre}" placeholder="Enter your favorite genre">
+        </div>
+        <div class="form-group">
+            <label>Year you started doing e-sports</label>
+            <input th:field="*{date}" placeholder="date">
+        </div>
+        <div class="form-group">
+            <label>Where do you live?</label>
+            <input th:field="*{city}" placeholder="city">
+        </div>
+        <div class="form-group">
+            <label>Favorite hobby?</label>
+            <input th:field="*{hobby}" placeholder="hobby">
+        </div>
+        <div class="form-group">
+            <label>Change photo</label>
+            <input type="file" id="real-file" >
+        </div>
+            <button type="submit">submit</button>
+    </form>
+</div>
+</body>
+</html>

@@ -11,6 +11,10 @@ data class UserDto(
         @get:NotEmpty(message="NotEmpty.user.email")
         var email: String = "",
 
+        @get:NotNull(message="NotNull.user.username")
+        @get:NotEmpty(message="NotEmpty.user.username")
+        var username: String = "",
+
         @ValidPassword
         var password: String = ""
 )
