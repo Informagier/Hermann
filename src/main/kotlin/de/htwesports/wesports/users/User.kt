@@ -3,6 +3,8 @@ package de.htwesports.wesports.users
 import de.htwesports.wesports.profile.Profile
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
+import de.htwesports.wesports.roles.Role
+import java.util.Objects
 import javax.persistence.*
 
 @Entity
@@ -30,9 +32,16 @@ class User(var email: String = "",
         }
 
         override fun hashCode(): Int {
-                var result = email.hashCode()
-                result = 31 * result + password.hashCode()
-                result = 31 * result + id.hashCode()
-                return result
+                return Objects.hash(email, password, id)
         }
+
+        @ManyToMany
+        @JoinTable(
+                name = "users_roles",
+                joinColumns = [JoinColumn(
+                        name = "user_id", referencedColumnName = "id")],
+                inverseJoinColumns = [JoinColumn(
+                        name = "role_id", referencedColumnName = "id")])
+
+        lateinit var roles: MutableCollection<Role>
 }
