@@ -37,7 +37,6 @@ internal class RegistrationsControllerIT {
     fun givenRegisterPageURI_whenMockMVC_thenReturnsRegisterView() {
         this.mockMvc.get("/register").andDo { print() }.andExpect {
             status { isOk }
-            model { attribute("title", "Register") }
             view { name("register") }
         }
     }
@@ -49,9 +48,8 @@ internal class RegistrationsControllerIT {
         this.mockMvc.post("/register") {
             flashAttr("user", accountDto)
         }.andDo { print() }.andExpect {
-            status { isOk }
-            model { attribute("title", "Home") }
-            view { name("index") }
+            status { isFound }
+            view { name("redirect:/") }
         }
     }
 
@@ -64,7 +62,6 @@ internal class RegistrationsControllerIT {
             flashAttr("user", accountDto)
         }.andDo { print() }.andExpect {
             status { isOk }
-            model { attribute("title", "Register") }
             view { name("register") }
         }
     }
