@@ -8,6 +8,7 @@ describe("Given the Register page", function() {
             cy.url().should('include', '/register');
 
             cy.get("#email").type("max.mustermann@example.com").should("have.value", "max.mustermann@example.com");
+            cy.get("#username").type("REEEEEEEEEEEE").should("have.value", "REEEEEEEEEEEE")
             cy.get("#password").type("Test1234").should("have.value", "Test1234");
             cy.get("#matchingPassword").type("Test1234").should("have.value", "Test1234");
 
