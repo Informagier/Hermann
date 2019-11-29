@@ -1,0 +1,15 @@
+env:
+  global:
+    secure: SUEr+rAAMqiMmYyDGWtjbCaRDX6F3wnCQQ0FflTHSwReYxJQzXTNR1GgnhtYQrNNVWw/87W3Mkk/CWioSNsMSYfdrzfIMNjeSom7wgXLL4Ty3df6dLU3iQE8D6H3wfNlMJdZz6Pt+KIvqxJNH9WEI7MuvC/ZQ/Sh4ioCp5k8nM55l4XmFd3/X3jV638qz6wnwNpHfCveD0Ia9/nzXu+FDg98XFw++CaVZ5K3gE8Mzt5De8/4LbtGOJMHRzrkUsNrxmxuGDVoJ/sFyVA2B9oXgCuWF1an7G5DQZHodqy3T56G68g7cdWsR2/GytGuxP7GEUeJf5Qwky5cMkXUNGnKYkw6Mybb5RqeO0g8Lua0kFMApFlbLzlmwDI1CbA+48Y00CrWT/QEij8qMlIbu9Es4iZjdj9fPFZAgca/87IKLCUPErPQY4bFIMAH6Xj5M7NTdSdPnpZs87tdahDjTSomDt5qjeU2GSoF5gUfNldNsyiOsBVzO+KClQv9rfvlvi/46yj5ndeVGSxgK0JC5K71sHhxy1NVXfqCZ4oKPgtaPU2diq6lZEpTTHXED0eIsire/ZXyB3gtQbiKDOkjZst67QGDwSBcQNzdtHt5Yv1do5RCccjnDaniBxquLcNnNRaBCKN6WKhADEpk2wBcyU0/fvDjmtxRgIagdD4jrcNdKAA=
+language: java
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - ./gradlew check
+  - ./gradlew jacocoTestReport
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
