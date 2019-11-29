@@ -17,7 +17,7 @@
     <div class="container" id="headingCont">
     <h1>Discover other users!</h1>
     <div th:each="profile: ${profiles}">
-        <form th:action="@{/{path}(path=${profile.uri})}">
+        <form th:action="@{/profiles/{path}(path=${profile.uri})}">
             <button type="submit" id="profileButton" th:text="${profile.username}">Profile</button>
         </form>
 </div>

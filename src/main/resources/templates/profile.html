@@ -4,12 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/base}">
 <head>
-    <meta charset="UTF-8">
     <title>Profile</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
-
 </head>
 <body>
 <main layout:fragment="content">
@@ -27,7 +22,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            <form th:action="@{/edit/{path}(path=${Profile.uri})}">
+            <form th:action="@{/profiles/{path}/edit (path=${Profile.uri})}">
                 <button type="submit" id="edit">Edit Profile</button>
             </form>
         </div>

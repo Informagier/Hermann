@@ -16,13 +16,13 @@ class ProfileListController {
     @Autowired
     private lateinit var profileRepository: ProfileRepository
 
-    @GetMapping("/profileList")
+    @GetMapping("profiles/profileList")
     fun getProfileList(model: Model): ModelAndView {
         var profiles = profileRepository.findAll()
         model.addAttribute("profiles",profiles)
         return ModelAndView("profileList")
     }
-    @RequestMapping(value = ["/{uri}"], method = [RequestMethod.GET])
+    @GetMapping("profiles/{uri}")
     fun goToProfile(@PathVariable("uri") uri: String, model: Model): ModelAndView {
         val profile:Profile? = profileRepository.findByUri(uri)?: return ModelAndView("profileList")
         model.addAttribute("Profile", profile)
