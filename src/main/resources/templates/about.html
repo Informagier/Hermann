@@ -1,137 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
-    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
-
-
-</head>
-<body>
-<div class ="container" id="about">
-    <div class="date"><strong th:text="${#temporals.format(localDateTime, 'dd/MMM/yyyy HH:mm')}">31/12/2015 15:00</strong>
-    </div>
-<h1>About us:</h1>
-    <div class="aboutText">
-<p>We are Damian, Dominik and Jenny, three computer science students at HTW.
-Our project is a website for creating a better connection in the e-Sports community of Berlin</p>
-    </div>
-</div>
-<div class="container" id="goals">
-<h1 id="goalsHeading">Goals</h1>
-<ol>
-    <li>Improve communication and connections in-/between the different eSport 	clubs in cities
-    </li>
-    <li>Make eSport clubs more approachable</li>
-    <li>Support (event) planning processes
-    </li>
-</ol>
-</div>
-<div class="container" id="personaContainer">
-<h1 id="personaHeading">User Personas</h1>
-<h4 id="markoMorgano">Marko Morgano</h4>
-    <div class="container">
-        <div class="personaRow">
-        <div class="row" id="personaRow">
-            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                <ul class="personaList">
-                    <li >Demographic</li>
-                    <ul>
-                        <li>around 25 years old</li>
-                        <li>participant in the e-Sport initiative of the HTW-Berlin</li>
-                        <li>lives in berlin</li>
-                        <li>works as an IT-guy</li>
-                        <li>lives with his girlfriend</li>
-                        <li>earns a little bit of money</li>
-                    </ul>
-                    <li>Habits</li>
-                    <ul>
-                        <li>plays video games</li>
-                        <li>manages e-Sport initiative</li>
-                        <li>LARP</li>
-                        <li>studies IT</li>
-                        <li>communicates with other e-Sport clubs in berlin</li>
-                        <li>recognizeable because beard and big black coat and long hair and boots</li>
-
-                    </ul>
-                    <li>Goals</li>
-                    <ul>
-                        <li>recognition/success of e-Sports in a university context</li>
-                        <li>more e-Sport Clubs in Berlin</li>
-                        <li>a network between the e-Sports clubs of universities in Berlin</li>
-                    </ul>
-                    <li>Needs</li>
-                    <ul>
-                        <li>better communication within the initiative</li>
-                    </ul>
-                    <li>Real People Examples</li>
-                    <ul>
-                        <li>Mark Morgan</li>
-                    </ul>
-                </ul>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+    <head>
+        <title>About</title>
+    </head>
+    <body>
+        <main layout:fragment="content">
+            <div class="container" id="about">
+                <div class="date">
+                    <strong th:text="${#temporals.format(localDateTime, 'dd/MMM/yyyy HH:mm')}">
+                        dd/MMM/yyyy HH:mm
+                    </strong>
+                </div>
+                <h1>About us</h1>
+                <div class="aboutText">
+                    <p>We are Damian, Dominik and Jenny, three computer science students at HTW.
+                        Our project is a website for creating a better connection in the e-Sports community of Berlin.</p>
+                </div>
             </div>
-            <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-sm-12 col-xs-12">
-                <img th:src="@{/images/public/mark.png}" class="img-responsive" alt="marko morgano"/>
+            <div class="container" id="goals">
+                <h1 id="goalsHeading">Goals</h1>
+                <ol>
+                    <li>Improve communication and connections in-/between the different eSport clubs in cities</li>
+                    <li>Make eSport clubs more approachable</li>
+                    <li>Support (event) planning processes</li>
+                </ol>
             </div>
-        </div>
-    </div>
-    </div>
-    <h4 id="jennifer"> Jennifer</h4>
-    <div class="container">
-        <div class="personaRow">
-        <div class="row">
-        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-            <ul>
-                <li>Demographic</li>
-                <ul>
-                    <li>around 22 years old</li>
-                    <li>student at HTW-Bärlin</li>
-                    <li>lives in berlin</li>
-                    <li>works sometimes</li>
-                    <li>lives with her boyfriend</li>
-                    <li>earns a little bit of money</li>
-                </ul>
-                <li>Habits</li>
-                <ul>
-                    <li>plays computer games</li>
-                    <li>studies IT</li>
-                    <li>likes to read</li>
-                    <li>does archery</li>
-                    <li>recognizeable by knitting in lectures</li>
-                </ul>
-                <li>Goals</li>
-                <ul>
-                    <li>enjoy playing computer</li>
-                    <li>find out more about eSports</li>
-                </ul>
-                <li>Needs</li>
-                <ul>
-                    <li>a source of information about eSports</li>
-                </ul>
-                <li>Real People Examples</li>
-                <ul>
-                    <li>Jenny Illbruck</li>
-                </ul>
-            </ul>
-        </div>
-        <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-sm-11 col-xs-12">
-            <img th:src="@{/images/public/me.jpg}" class="img-responsive" alt="jennifer"/>
-        </div>
-    </div>
-    </div>
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-</body>
+            <div class="container" id="personaContainer">
+                <h1 id="personaHeading">User Personas</h1>
+                <h4 id="markoMorgano">Marko Morgano</h4>
+                <div class="container">
+                    <div class="personaRow">
+                        <div class="row" id="personaRow">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <ul class="personaList">
+                                    <li>Demographic
+                                        <ul>
+                                            <li>around 25 years old</li>
+                                            <li>participant in the e-Sport initiative of the HTW-Berlin</li>
+                                            <li>lives in berlin</li>
+                                            <li>works as an IT-guy</li>
+                                            <li>lives with his girlfriend</li>
+                                            <li>earns a little bit of money</li>
+                                        </ul>
+                                    </li>
+                                    <li>Habits
+                                        <ul>
+                                            <li>plays video games</li>
+                                            <li>manages e-Sport initiative</li>
+                                            <li>LARP</li>
+                                            <li>studies IT</li>
+                                            <li>communicates with other e-Sport clubs in berlin</li>
+                                            <li>recognizeable because beard and big black coat and long hair and boots</li>
+                                        </ul>
+                                    </li>
+                                    <li>Goals
+                                        <ul>
+                                            <li>recognition/success of e-Sports in a university context</li>
+                                            <li>more e-Sport Clubs in Berlin</li>
+                                            <li>a network between the e-Sports clubs of universities in Berlin</li>
+                                        </ul>
+                                    </li>
+                                    <li>Needs
+                                        <ul>
+                                            <li>better communication within the initiative</li>
+                                        </ul>
+                                    </li>
+                                    <li>Real People Examples
+                                        <ul>
+                                            <li>Mark Morgan</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-sm-12 col-xs-12">
+                                <img src="/static/images/public/mark.png" class="img-fluid" alt="Marko Morgano"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 id="jennifer">Jennifer</h4>
+                <div class="container">
+                    <div class="personaRow">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <ul>
+                                    <li>Demographic
+                                        <ul>
+                                            <li>around 22 years old</li>
+                                            <li>student at HTW-Bärlin</li>
+                                            <li>lives in berlin</li>
+                                            <li>works sometimes</li>
+                                            <li>lives with her boyfriend</li>
+                                            <li>earns a little bit of money</li>
+                                        </ul>
+                                    </li>
+                                    <li>Habits
+                                        <ul>
+                                            <li>plays computer games</li>
+                                            <li>studies IT</li>
+                                            <li>likes to read</li>
+                                            <li>does archery</li>
+                                            <li>recognizeable by knitting in lectures</li>
+                                        </ul>
+                                    </li>
+                                    <li>Goals
+                                        <ul>
+                                            <li>enjoy playing computer</li>
+                                            <li>find out more about eSports</li>
+                                        </ul>
+                                    </li>
+                                    <li>Needs
+                                        <ul>
+                                            <li>a source of information about eSports</li>
+                                        </ul>
+                                    </li>
+                                    <li>Real People Examples
+                                        <ul>
+                                            <li>Jenny Illbruck</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1 col-sm-11 col-xs-12">
+                                <img src="/static/images/public/me.jpg" class="img-fluid" alt="Jennifer"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
