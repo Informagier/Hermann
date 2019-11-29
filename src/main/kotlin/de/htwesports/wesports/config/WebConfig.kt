@@ -40,5 +40,7 @@ class WebConfig : WebMvcConfigurer {
     override fun addViewControllers(registry: ViewControllerRegistry) {
         registry.addViewController("/").setViewName("index")
         registry.addViewController("/login").setViewName("login")
+        registry.addViewController("/user/foobar/profile").setViewName("user_test")
+        registry.addViewController("/admin/dashboard").setViewName("admin_test")
     }
 }
