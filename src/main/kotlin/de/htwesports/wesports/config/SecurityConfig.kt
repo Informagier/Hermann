@@ -23,13 +23,15 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userDetailsService)
         auth.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder().encode("user")).roles("USER").and()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
+                .withUser("user@example.com").password(passwordEncoder().encode("user")).roles("USER").and()
+                .withUser("admin@example.com").password(passwordEncoder().encode("admin")).roles("ADMIN")
     }
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/h2-console/**").permitAll() // Only local database
                 .antMatchers("/webjars/**").permitAll() // Bootstrap, jQuery
                 .antMatchers("/static/**").permitAll() // Static resources
@@ -38,6 +40,15 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .and()
 
                 .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/perform_login")
+                .permitAll()
+                .and()
+
+                .logout()
+                .logoutUrl("/perform_logout")
+                .deleteCookies("JSESSIONID")
+                .permitAll()
                 .and()
 
                 .httpBasic()
