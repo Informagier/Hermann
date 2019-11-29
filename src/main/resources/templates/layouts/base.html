@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
         <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">WeSports</title>
@@ -33,7 +34,12 @@
                             <a class="nav-link" href="/register">Sign up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Log in</a>
+                            <div sec:authorize="isAuthenticated()">
+                                <a class="nav-link" th:href="@{/perform_logout}">Log out</a>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <a class="nav-link" th:href="@{/login}">Log in</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

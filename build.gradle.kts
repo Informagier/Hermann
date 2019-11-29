@@ -37,6 +37,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE")
 	implementation("org.webjars:bootstrap:4.3.1")
 	implementation("org.webjars:jquery:3.4.1")
 	implementation("org.webjars:popper.js:1.15.0")
