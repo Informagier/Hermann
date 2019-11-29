@@ -3,7 +3,7 @@ describe("Given the Register page", function() {
         it("Then should create an user account and redirect to the Home page", function() {
             cy.visit("/");
 
-            cy.get(':nth-child(2) > .nav-link').click();
+            cy.get('.navbar-nav > :nth-child(2) > .nav-link').click();
 
             cy.url().should('include', '/register');
 
@@ -13,7 +13,7 @@ describe("Given the Register page", function() {
 
             cy.get("#submitBtn").click();
 
-            cy.url().should('include', '/')
+            cy.url().should('eq', 'http://localhost:8080/')
         });
     });
 });

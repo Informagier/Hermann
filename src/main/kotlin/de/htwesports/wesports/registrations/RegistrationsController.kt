@@ -23,7 +23,6 @@ class RegistrationsController {
     @GetMapping("/register")
     fun show(model: Model): ModelAndView {
         val userDto = UserDto()
-        model.addAttribute("title", "Register")
         model.addAttribute("user", userDto)
         return ModelAndView("register")
     }
@@ -36,14 +35,11 @@ class RegistrationsController {
                 result.rejectValue("email", "message.regError")
             }
         }
-        model.addAttribute("user", accountDto)
         return if (result.hasErrors()) {
-            model.addAttribute("title", "Register")
+            model.addAttribute("user", accountDto)
             ModelAndView("register")
-        }
-        else {
-            model.addAttribute("title", "Home")
-            ModelAndView("index")
+        } else {
+            ModelAndView("redirect:/")
         }
     }
 

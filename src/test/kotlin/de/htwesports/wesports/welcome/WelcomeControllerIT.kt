@@ -18,7 +18,6 @@ internal class WelcomeControllerIT {
     fun givenHomePageURI_whenMockMVC_thenReturnsIndexView() {
         this.mockMvc.get("/").andDo { print() }.andExpect {
             status { isOk }
-            model { attribute("title", "Home") }
             view { name("index") }
         }
     }

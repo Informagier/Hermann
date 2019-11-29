@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.2.0.RELEASE"
+	id("org.springframework.boot") version "2.2.1.RELEASE"
 	id("io.spring.dependency-management") version "1.0.8.RELEASE"
-	kotlin("jvm") version "1.3.50"
-	kotlin("plugin.spring") version "1.3.50"
-	kotlin("plugin.jpa") version "1.3.50"
-	kotlin("plugin.allopen") version "1.3.50"
+	kotlin("jvm") version "1.3.61"
+	kotlin("plugin.spring") version "1.3.61"
+	kotlin("plugin.jpa") version "1.3.61"
+	kotlin("plugin.allopen") version "1.3.61"
 }
 
 allOpen {
@@ -37,6 +37,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE")
 	implementation("org.webjars:bootstrap:4.3.1")
 	implementation("org.webjars:jquery:3.4.1")
 	implementation("org.webjars:popper.js:1.15.0")
