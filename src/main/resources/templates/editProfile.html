@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
 <head>
     <meta charset="UTF-8">
-    <title>Edit your Profile</title>
+    <title>Edit your profile</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css">
@@ -10,34 +13,37 @@
 
 </head>
 <body>
-<div class="container">
+<main layout:fragment="content">
+<div class="container" id="headingCont">
+    <h1>Edit your profile</h1>
+</div>
     <form th:action="@{/{path}(path=${profile.uri})}" th:object="${profile}" method="POST" enctype="utf8">
         <div class="form-group">
-            <label>Favorite game</label>
-            <input th:field="*{game}" placeholder="Enter your favorite game">
+            <label for="game" >Favorite games</label>
+            <input th:field="*{game}" class="form-control" id="game" placeholder="Enter your favorite games">
         </div>
         <div class="form-group">
-            <label>Favorite genre</label>
-            <input th:field="*{genre}" placeholder="Enter your favorite genre">
+            <label for="genre">Favorite genre</label>
+            <input th:field="*{genre}" class="form-control" id="genre" placeholder="Enter your favorite genre">
         </div>
         <div class="form-group">
-            <label>Year you started doing e-sports</label>
-            <input th:field="*{date}" placeholder="date">
+            <label for="year">Year you started doing e-sports</label>
+            <input th:field="*{date}" class="form-control" id="year" placeholder="date">
         </div>
         <div class="form-group">
-            <label>Where do you live?</label>
-            <input th:field="*{city}" placeholder="city">
+            <label for="city">Where do you live?</label>
+            <input th:field="*{city}" class="form-control" id="city" placeholder="city">
         </div>
         <div class="form-group">
-            <label>Favorite hobby?</label>
-            <input th:field="*{hobby}" placeholder="hobby">
+            <label for="hobby">Favorite hobby?</label>
+            <input th:field="*{hobby}" class="form-control" id="hobby" placeholder="hobby">
         </div>
         <div class="form-group">
-            <label>Change photo</label>
-            <input type="file" id="real-file" >
+            <label for="photo">Change photo</label>
+            <input type="file" id="photo" >
         </div>
-            <button type="submit">submit</button>
+            <button type="submit" class="btn btn-primary btn-lg">submit</button>
     </form>
-</div>
+</main>
 </body>
 </html>

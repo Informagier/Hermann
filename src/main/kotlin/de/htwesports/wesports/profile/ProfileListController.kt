@@ -1,6 +1,7 @@
 package de.htwesports.wesports.profile
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -22,9 +23,9 @@ class ProfileListController {
         return ModelAndView("profileList")
     }
     @RequestMapping(value = ["/{uri}"], method = [RequestMethod.GET])
-    fun goToProfile(@PathVariable("uri") uri: String, model: Model): String {
-        var profile = profileRepository.findByUri(uri)
+    fun goToProfile(@PathVariable("uri") uri: String, model: Model): ModelAndView {
+        val profile:Profile? = profileRepository.findByUri(uri)?: return ModelAndView("profileList")
         model.addAttribute("Profile", profile)
-        return "profile"
+        return ModelAndView("profile")
     }
 }
