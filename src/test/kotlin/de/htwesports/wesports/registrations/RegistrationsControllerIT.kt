@@ -43,7 +43,7 @@ internal class RegistrationsControllerIT {
 
     @Test
     fun givenFormData_whenUserCreated_thenReturnsIndexView() {
-        val accountDto = UserDto("max.mustermann@example.com", "Test1234")
+        val accountDto = UserDto("max.mustermann@example.com", "Test1234", "Test1234")
 
         this.mockMvc.post("/register") {
             flashAttr("user", accountDto)
