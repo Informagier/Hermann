@@ -11,7 +11,7 @@ import javax.persistence.*
 @Table(name = "users")
 class User(var email: String = "",
            var password: String = "",
-           @OneToOne(cascade =  arrayOf(CascadeType.ALL))
+           @OneToOne(cascade = [CascadeType.ALL])
            @JoinColumn(name = "profile_id", referencedColumnName = "profileid")
            var profile: Profile? = null) {
 

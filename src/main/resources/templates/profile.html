@@ -17,12 +17,12 @@
         </div>
         <div class="col-md-6">
             <div class="profile-head">
-                <h2 th:text="${Profile.username}"></h2>
+                <h2 th:text="${profile.username}"></h2>
                 <p class="experience">E-sports Experience : <span>Dragonslayer</span></p>
             </div>
         </div>
         <div class="col-md-2">
-            <form th:action="@{/profiles/{path}/edit (path=${Profile.uri})}">
+            <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
                 <button type="submit" id="edit">Edit Profile</button>
             </form>
         </div>
@@ -54,7 +54,7 @@
                             <label>Favorite games</label>
                         </div>
                         <div class="col-md-6">
-                            <p th:text="${Profile.game}"></p>
+                            <p th:text="${profile.game}"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -62,15 +62,7 @@
                             <label>Favourite Genre</label>
                         </div>
                         <div class="col-md-6">
-                            <p th:text="${Profile.genre}">RPG</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Started doing e-sports</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p th:text="${Profile.date}">2012</p>
+                            <p th:text="${profile.genre}">RPG</p>
                         </div>
                     </div>
                     <div class="row">
@@ -78,7 +70,7 @@
                             <label>Lives in</label>
                         </div>
                         <div class="col-md-6">
-                            <p th:text="${Profile.city}">Berlin</p>
+                            <p th:text="${profile.city}">Berlin</p>
                         </div>
                     </div>
                     <div class="row">
@@ -86,7 +78,7 @@
                             <label>Hobbies</label>
                         </div>
                         <div class="col-md-6">
-                            <p th:text="${Profile.hobby}">Berlin</p>
+                            <p th:text="${profile.hobby}">Berlin</p>
                         </div>
                     </div>
                 </div>

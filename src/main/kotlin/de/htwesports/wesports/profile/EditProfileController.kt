@@ -23,7 +23,7 @@ class EditProfileController {
 
     @GetMapping("/profiles/{uri}/edit")
     //TODO uncomment annotation below
-    @PreAuthorize("profileRepository.findByUri(#uri).user.email eq principal.username")
+    //@PreAuthorize("profileRepository.findByUri(#uri).user.email == principal.username")
     fun showEditForm(@PathVariable("uri") uri: String, model: Model, request: WebRequest): ModelAndView {
         //println("URI: "+userRepository.findByEmail(SecurityContextHolder.getContext().authentication.name)?.profile?.uri)
         //println("Uri User: "+profileRepository.findByUri(uri)?.user?.email)
