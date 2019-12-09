@@ -12,30 +12,22 @@ import org.springframework.web.bind.annotation.*
 
 
 @Controller
-class EditProfileController {
+class EditProfileController(var profileRepository: ProfileRepository) {
 
     @Autowired
     lateinit var service: ProfileService
 
-    @Autowired
-    lateinit var profileRepository: ProfileRepository
-
-
     @GetMapping("/profiles/{uri}/edit")
-    //TODO uncomment annotation below
-    //@PreAuthorize("profileRepository.findByUri(#uri).user.email == principal.username")
-    fun showEditForm(@PathVariable("uri") uri: String, model: Model, request: WebRequest): ModelAndView {
-        //println("URI: "+userRepository.findByEmail(SecurityContextHolder.getContext().authentication.name)?.profile?.uri)
-        //println("Uri User: "+profileRepository.findByUri(uri)?.user?.email)
-        //println("Principal.Username: "+authentification.principal.username)
+    @PreAuthorize("@accessService.isOwner(authentication.name,#uri)")
+    fun showEditForm(@PathVariable("uri") uri: String, model: Model): ModelAndView {
         val profile: Profile = profileRepository.findByUri(uri) ?: return ModelAndView("profileList")
         model.addAttribute("profile", profile)
         return ModelAndView("editProfile")
     }
 
+
     @PostMapping("/profiles/{uri}")
-    //TODO uncomment annotation below
-    //@PreAuthorize("#uri == userRepository.findByEmail(authentication.principal.username).profile?.uri")
+    @PreAuthorize("@accessService.isOwner(authentication.name,#uri)")
     fun safeProfile(@PathVariable("uri") uri: String,
                     @ModelAttribute("profile") profileDto: ProfileDto,
                     result: BindingResult, request: WebRequest, model:Model, errors: Errors): ModelAndView {
