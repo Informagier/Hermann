@@ -55,8 +55,7 @@ internal class RegistrationsControllerIT {
 
     @Test
     fun givenFormData_whenUserAlreadyExists_thenReturnsRegisterView() {
-        val accountDto = UserDto("admin@example.com", "Admin123")
-        userService.createUserAccount(accountDto)
+        val accountDto = UserDto("admin@example.com", "Admin123") //admin should be seeded
 
         this.mockMvc.post("/register") {
             flashAttr("user", accountDto)

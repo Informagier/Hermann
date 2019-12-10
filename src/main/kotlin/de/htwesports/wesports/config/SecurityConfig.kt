@@ -25,16 +25,11 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userDetailsService)
-        auth.inMemoryAuthentication()
-                .withUser("user@example.com").password(passwordEncoder().encode("user")).roles("USER").and()
-                .withUser("admin@example.com").password(passwordEncoder().encode("admin")).roles("ADMIN")
     }
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/h2-console/**").permitAll() // Only local database
                 .antMatchers("/webjars/**").permitAll() // Bootstrap, jQuery
                 .antMatchers("/static/**").permitAll() // Static resources
