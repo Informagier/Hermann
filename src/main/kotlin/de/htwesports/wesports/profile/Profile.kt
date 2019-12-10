@@ -14,7 +14,6 @@ class Profile(
         var username: String= "",
         var game: String = "",
         var genre: String = "",
-        var date: String = "",
         var city: String = "",
         var hobby: String = "",
         /*@Lob

@@ -22,10 +22,4 @@ class ProfileListController {
         model.addAttribute("profiles",profiles)
         return ModelAndView("profileList")
     }
-    @GetMapping("profiles/{uri}")
-    fun goToProfile(@PathVariable("uri") uri: String, model: Model): ModelAndView {
-        val profile:Profile? = profileRepository.findByUri(uri)?: return ModelAndView("profileList")
-        model.addAttribute("Profile", profile)
-        return ModelAndView("profile")
-    }
 }

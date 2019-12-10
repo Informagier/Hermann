@@ -13,7 +13,6 @@ class ProfileService : IProfileService {
     @Transactional
     override fun saveProfile(profileDto: ProfileDto, existingProfile: Profile){
         existingProfile.game = profileDto.game
-        existingProfile.date = profileDto.date
         existingProfile.genre = profileDto.genre
         existingProfile.city = profileDto.city
         existingProfile.hobby = profileDto.hobby
