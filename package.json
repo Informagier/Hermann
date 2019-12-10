@@ -1,0 +1,22 @@
+{
+  "name": "wesports",
+  "version": "1.0.0",
+  "description": "A networking platform for eSports clubs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Informagier/WeSports.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Informagier/WeSports/issues"
+  },
+  "homepage": "https://github.com/Informagier/WeSports#readme",
+  "dependencies": {
+    "cypress": "^3.7.0"
+  }
+}

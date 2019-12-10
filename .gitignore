@@ -11,7 +11,7 @@ cypress/plugins/
 cypress/screenshots/
 cypress/support/
 cypress/videos/
-
+cypress/fixtures/
 ### STS ###
 .apt_generated
 .classpath

@@ -6,7 +6,7 @@ then
  
     springPID=$!
 
-    npx cypress run
+    npm test
     
     ec=$?
     
