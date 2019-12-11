@@ -43,7 +43,7 @@ class EditProfileController {
         if (!result.hasErrors()) {
             service.saveProfile(profileDto,existingProfile)
         }
-        model.addAttribute("Profile",existingProfile)
+        model.addAttribute("profile",existingProfile)
         return  ModelAndView("profile")
     }
 

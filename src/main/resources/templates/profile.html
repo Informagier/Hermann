@@ -8,90 +8,90 @@
 </head>
 <body>
 <main layout:fragment="content">
-<div class="container profile-container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="profile-img">
-                <img th:src="@{../static/images/public/profile.png}" class="img-responsive" alt="profile picture"/>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="profile-head">
-                <h2 th:text="${profile.username}"></h2>
-                <p class="experience">E-sports Experience : <span>Dragonslayer</span></p>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
-                <button type="submit" id="edit">Edit Profile</button>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="profile-links">
-                <p>E-SPORT CLUBS</p>
-                <a href="">Link to club</a><br/>
-                <p>Platforms</p>
-                <a href="">Dummy Steam</a><br/>
-                <a href="">Dummy Discord</a><br/>
-                <a href="">Dummy whatever</a><br/>
-            </div>
-        </div>
-        <div class="col-md-9 tab-column">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="profile" aria-selected="false">Calendar</a>
-                </li>
-            </ul>
-            <div class="tab-content profile-tab" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Favorite games</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p th:text="${profile.game}"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Favourite Genre</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p th:text="${profile.genre}">RPG</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Lives in</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p th:text="${profile.city}">Berlin</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Hobbies</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p th:text="${profile.hobby}">Berlin</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="profile-tab">
-                    to be implemented
+    <div class="container profile-container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img th:src="@{../static/images/public/profile.png}" class="img-responsive" alt="profile picture"/>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h2 th:text="${profile.username}"></h2>
+                    <p class="experience">E-sports Experience : <span>Dragonslayer</span></p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
+                    <button type="submit" id="editBtn">Edit Profile</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-links">
+                    <p>E-SPORT CLUBS</p>
+                    <a href="">Link to club</a><br/>
+                    <p>Platforms</p>
+                    <a href="">Dummy Steam</a><br/>
+                    <a href="">Dummy Discord</a><br/>
+                    <a href="">Dummy whatever</a><br/>
+                </div>
+            </div>
+            <div class="col-md-9 tab-column">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="profile" aria-selected="false">Calendar</a>
+                    </li>
+                </ul>
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Favorite games</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.game}" id="gameField"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Favourite Genre</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.genre}" id="genreField">RPG</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Lives in</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.city}" id="cityField">Berlin</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Hobbies</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.hobby}" id="hobbyField">Berlin</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="profile-tab">
+                        to be implemented
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </main>
 </body>
 </html>
