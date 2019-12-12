@@ -16,10 +16,11 @@ class Role (var name: String){
     var id: Long = 0L
 
     @ManyToMany(mappedBy = "roles")
-
     lateinit var users: MutableCollection<User>
 
     @ManyToMany
-    @JoinTable(name = "roles_privileges", joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")], inverseJoinColumns = [JoinColumn(name = "privilege_id", referencedColumnName = "id")])
+    @JoinTable(name = "roles_privileges",
+            joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
+            inverseJoinColumns = [JoinColumn(name = "privilege_id", referencedColumnName = "id")])
     lateinit var privileges: MutableCollection<Privilege>
 }
