@@ -5,6 +5,9 @@
       layout:decorate="~{layouts/base}">
 <head>
     <title>Profile</title>
+    <script src="/static/js/sutLoader.js">
+
+    </script>
 </head>
 <body>
 <main layout:fragment="content">
@@ -25,6 +28,17 @@
                 <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
                     <button type="submit" id="editBtn">Edit Profile</button>
                 </form>
+            </div>
+            <div class="col-md-2" th:if="${is_my_profile}">
+                <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
+                    <button type="submit" id="edit">Edit Profile</button>
+                </form>
+                <div class="single-use-token">
+                        <form action="javascript:loadSut('single-use-token')">
+                            <button type="submit">CrEaTe SiNgLe UsE tOkEn</button>
+                        </form>
+                    <span class="token"></span>
+                </div>
             </div>
         </div>
         <div class="row">

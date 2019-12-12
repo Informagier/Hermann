@@ -7,31 +7,35 @@ describe('Profile Tests', function() {
 
     //register a user
     before(function() {
-        cy.request('POST', '/register', {
-            username: uname,
-            email: email,
-            password: passwd
-        })
+        cy.visit('/register');
+
+        cy.get("#email").type(email)
+        cy.get("#username").type(uname)
+        cy.get("#password").type(passwd)
+        cy.get("#matchingPassword").type(passwd)
+
+        cy.get("#submitBtn").click();
     })
     //login
     beforeEach(function() {
-        cy.request('POST', '/perform_login', {
-            username: email,
-            password: passwd
-        })
+        cy.visit('/login');
+
+        cy.get("#username").type(email);
+        cy.get("#password").type(passwd);
+        cy.get("#submitBtn").click();
     })
 
     it('create singleUseToken', function(){
         cy.visit('/profiles/profile')
-        cy.get('.single_use_token')
+        cy.get('.single-use-token')
             .find('button')
             .click()
 
-        cy.get('.single_use_token')
+        cy.get('.single-use-token')
             .find('.token')
             .should((token) => {
-                var text = token.text()
-                return text.length() == 38
+                var text = token.text
+                return text.length == 38
             })
     })
 })

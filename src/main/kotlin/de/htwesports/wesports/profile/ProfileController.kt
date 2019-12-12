@@ -43,15 +43,18 @@ class ProfileController (
 
     @GetMapping("profiles/{uri}")
     fun goToProfile(@PathVariable("uri") uri: String, model: Model): ModelAndView {
-
         val profile:Profile? = profileRepository.findByUri(uri)
+
+        val userEmail = SecurityContextHolder.getContext()?.authentication?.name
+        val profileOwnerEmail = profile?.user?.email
+        val isOwnProfile = userEmail != null && userEmail == profileOwnerEmail
+
         if (profile != null) {
             model.addAttribute("profile", profile)
-        }
-        else{
+        } else {
             throw ResponseStatusException(HttpStatus.NOT_FOUND, "profile not found")
         }
-        return ModelAndView("profile")
+        return ModelAndView("profile", mapOf("is_my_profile" to isOwnProfile, "profile_uri" to profile.uri))
     }
 
 }
