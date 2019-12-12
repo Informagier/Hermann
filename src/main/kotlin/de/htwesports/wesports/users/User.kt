@@ -18,7 +18,7 @@ class User(var email: String = "",
         @Id
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "uuid2")
-        var id: String = UUID.randomUUID().toString()
+        var uuid: String = UUID.randomUUID().toString()
 
 
 
@@ -28,20 +28,19 @@ class User(var email: String = "",
 
                 return email == other.email
                         && password == other.password
-                        && id == other.id
+                        && uuid == other.uuid
         }
 
         override fun hashCode(): Int {
-                return Objects.hash(email, password, id)
+                return Objects.hash(email, password, uuid)
         }
 
         @ManyToMany
         @JoinTable(
                 name = "users_roles",
                 joinColumns = [JoinColumn(
-                        name = "user_id", referencedColumnName = "id")],
+                        name = "user_id", referencedColumnName = "uuid")],
                 inverseJoinColumns = [JoinColumn(
                         name = "role_id", referencedColumnName = "id")])
-
         lateinit var roles: MutableCollection<Role>
 }
