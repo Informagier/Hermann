@@ -11,6 +11,5 @@ class Privilege (var name : String){
     var id: Long = 0
 
     @ManyToMany(mappedBy = "privileges")
-
     lateinit var roles: MutableCollection<Role>
 }
