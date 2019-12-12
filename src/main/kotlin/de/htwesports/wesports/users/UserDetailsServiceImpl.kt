@@ -25,8 +25,7 @@ class UserDetailsServiceImpl : UserDetailsService {
     override fun loadUserByUsername(email: String): UserDetails {
         val user = userRepository.findByEmail(email)
         if (user != null) {
-            return org.springframework.security.core.userdetails.User(
-                    user.email, user.password, getAuthorities(user.roles!!))
+            return MyUserPrincipal(user)
         }else {
             throw UsernameNotFoundException("No user found with username: $email")
         }

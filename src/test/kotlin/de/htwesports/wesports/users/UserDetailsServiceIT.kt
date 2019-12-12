@@ -29,8 +29,9 @@ internal class UserDetailsServiceIT {
     fun givenValidEmail_whenEmailExists_thenReturnsUserDetails() {
         val user = User("max.mustermann@example.com", passwordEncoder.encode("Test1234"))
         userRepository.save(user)
-        val userDetails = org.springframework.security.core.userdetails.User(user.email, user.password, listOf())
-        assertEquals(userDetails, userDetailsService.loadUserByUsername(user.email))
+        val userDetails = MyUserPrincipal(user)
+        assertEquals(userDetails.user.email,
+                (userDetailsService.loadUserByUsername(user.email) as MyUserPrincipal).user.email)
     }
 
     @Test

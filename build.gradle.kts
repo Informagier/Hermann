@@ -31,6 +31,7 @@ repositories {
 }
 
 dependencies {
+	testCompile ("io.rest-assured:json-path:3.0.0")
 	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.4.1")
 	implementation("org.passay:passay:1.5.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -46,6 +47,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
+	testCompile (group = "com.jayway.restassured", name = "rest-assured", version = "2.4.0")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
