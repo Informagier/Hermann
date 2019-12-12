@@ -24,11 +24,6 @@
                     <p class="experience">E-sports Experience : <span>Dragonslayer</span></p>
                 </div>
             </div>
-            <div class="col-md-2">
-                <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
-                    <button type="submit" id="editBtn">Edit Profile</button>
-                </form>
-            </div>
             <div class="col-md-2" th:if="${is_my_profile}">
                 <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
                     <button type="submit" id="edit">Edit Profile</button>
