@@ -34,34 +34,66 @@ internal class RegistrationsControllerIT {
     private lateinit var userService: UserService
 
     @Test
-    fun givenRegisterPageURI_whenMockMVC_thenReturnsRegisterView() {
-        this.mockMvc.get("/register").andDo { print() }.andExpect {
-            status { isOk }
-            view { name("register") }
-        }
+    fun whenRequestRegisterPage_thenReturnStatus200() {
+        this.mockMvc.get("/register")
+                .andDo { print() }
+                .andExpect {
+                    status { isOk }
+                }
     }
 
     @Test
-    fun givenFormData_whenUserCreated_thenReturnsIndexView() {
-        val accountDto = UserDto("max.mustermann@example.com", "Test1234", "Test1234")
-
-        this.mockMvc.post("/register") {
-            flashAttr("user", accountDto)
-        }.andDo { print() }.andExpect {
-            status { isFound }
-            view { name("redirect:/") }
-        }
+    fun whenRequestRegisterPage_thenReturnRegisterView() {
+        this.mockMvc.get("/register")
+                .andDo { print() }
+                .andExpect {
+                    view { name("register") }
+                }
     }
 
     @Test
-    fun givenFormData_whenUserAlreadyExists_thenReturnsRegisterView() {
-        val accountDto = UserDto("admin@example.com", "Admin123") //admin should be seeded
+    fun givenFormData_whenUserCreated_thenReturnStatus302() {
+        val accountDto = UserDto("john.doe@example.com", "JohnDoe", "Password123")
 
-        this.mockMvc.post("/register") {
-            flashAttr("user", accountDto)
-        }.andDo { print() }.andExpect {
-            status { isOk }
-            view { name("register") }
-        }
+        this.mockMvc.post("/register") { flashAttr("user", accountDto) }
+                .andDo { print() }
+                .andExpect {
+                    status { isFound }
+                }
+    }
+
+    @Test
+    fun givenFormData_whenUserCreated_thenRedirectToHomePage() {
+        val accountDto = UserDto("john.doe@example.com", "JohnDoe", "Password123")
+
+        this.mockMvc.post("/register") { flashAttr("user", accountDto) }
+                .andDo { print() }
+                .andExpect {
+                    view { name("redirect:/") }
+                }
+    }
+
+    @Test
+    fun givenFormData_whenUserAlreadyExists_thenReturnStatus200() {
+        val accountDto = UserDto("john.doe@example.com", "JohnDoe", "Password123")
+        userService.createUserAccount(accountDto)
+
+        this.mockMvc.post("/register") { flashAttr("user", accountDto) }
+                .andDo { print() }
+                .andExpect {
+                    status { isOk }
+                }
+    }
+
+    @Test
+    fun givenFormData_whenUserAlreadyExists_thenReturnRegisterView() {
+        val accountDto = UserDto("john.doe@example.com", "JohnDoe", "Password123")
+        userService.createUserAccount(accountDto)
+
+        this.mockMvc.post("/register") { flashAttr("user", accountDto) }
+                .andDo { print() }
+                .andExpect {
+                    view { name("register") }
+                }
     }
 }

@@ -1,20 +1,52 @@
-describe("Given the Login page", function() {
-    describe("When filling in the form", function () {
-        it("Then should fail and redirect to the Login page", function() {
+describe("Given a user wants to log in", function() {
+    describe("When the user is not registered", function () {
+        it("Then the user cannot log in", function() {
             cy.visit("/");
 
             cy.get('.navbar-nav > :nth-child(3) > div > .nav-link').click();
 
             cy.url().should('include', '/login');
 
-            cy.get("#username").type("max.mustermann@example.com").should("have.value", "max.mustermann@example.com");
-            cy.get("#password").type("Test1234").should("have.value", "Test1234");
+            cy.get("#username").type("jane.doe@example.com").should("have.value", "jane.doe@example.com");
+            cy.get("#password").type("Password123").should("have.value", "Password123");
 
             cy.get("#submitBtn").click();
 
             cy.url().should('eq', 'http://localhost:8080/login?error');
 
             cy.get('.navbar-nav > :nth-child(3) > div > .nav-link').should("have.text", "Log in");
+        });
+    });
+});
+
+describe("Given a new user wants to register", function() {
+    describe("When the user completes the registration correctly", function () {
+        it("Then the user should be registered and can log in successfully", function() {
+            cy.visit("/");
+
+            cy.get('.navbar-nav > :nth-child(2) > .nav-link').click();
+
+            cy.url().should('include', '/register');
+
+            cy.get("#username").type("JohnDoe").should("have.value", "JohnDoe");
+            cy.get("#email").type("john.doe@example.com").should("have.value", "john.doe@example.com");
+            cy.get("#password").type("Password123").should("have.value", "Password123");
+            cy.get("#matchingPassword").type("Password123").should("have.value", "Password123");
+
+            cy.get("#submitBtn").click();
+
+            cy.url().should('eq', 'http://localhost:8080/');
+
+            cy.get('.navbar-nav > :nth-child(3) > div > .nav-link').click();
+
+            cy.url().should('include', '/login');
+
+            cy.get("#username").type("john.doe@example.com").should("have.value", "john.doe@example.com");
+            cy.get("#password").type("Password123").should("have.value", "Password123");
+
+            cy.get("#submitBtn").click();
+
+            cy.url().should('eq', 'http://localhost:8080/');
         });
     });
 });

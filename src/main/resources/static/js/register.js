@@ -3,12 +3,19 @@ $(function() {
     const $submitBtn = $("#submitBtn");
     const $errorMsg =  $('<div class="alert alert-danger" id="errorMsg">Passwords do not match</div>');
 
+    let isValid = false;
+
     let options = {
         common: {
             minChar: 8,
             maxChar: 64,
             usernameField: "#email",
-            debug: true
+            debug: true,
+            onKeyUp: function (evt, data) {
+                const options = $(evt.target).data('pwstrength-bootstrap');
+
+                isValid = options.instances.errors.length === 0;
+            }
         },
         rules: {
             activated: {
@@ -48,7 +55,8 @@ $(function() {
             strong: 'Strong',
             veryStrong: 'Very Strong',
             wordNoUppercase: 'Your password contains no uppercase character',
-            wordNoLowercase: 'Your password contains no lowercase character'
+            wordNoLowercase: 'Your password contains no lowercase character',
+            wordNoNumber: 'Your password contains no numbers'
         },
         t: function (key) {
             let result = options.i18n.fallback[key];
@@ -70,18 +78,24 @@ $(function() {
         }
         return 0;
     }, -50, true);
+    $passwordBox.pwstrength("addRule", "wordNoNumber", function (options, word, score) {
+        if(/^[^0-9]+$/.test(word)) {
+            return score;
+        }
+        return 0;
+    }, -50, true);
 
     $submitBtn.attr("disabled", true);
     $errorMsg.insertAfter($confirmBox);
 
     function checkMatchingPasswords(){
         if($confirmBox.val() !== "" && $passwordBox.val !== ""){
-            if($confirmBox.val() !== $passwordBox.val()){
-                $submitBtn.attr("disabled", true);
-                $errorMsg.insertAfter($confirmBox);
-            } else {
+            if($confirmBox.val() === $passwordBox.val() && isValid){
                 $submitBtn.removeAttr("disabled");
                 $errorMsg.remove();
+            } else {
+                $submitBtn.attr("disabled", true);
+                $errorMsg.insertAfter($confirmBox);
             }
         }
     }
