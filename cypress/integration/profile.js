@@ -34,8 +34,8 @@ describe('Profile Tests', function() {
         cy.get('.single-use-token')
             .find('.token')
             .should((token) => {
-                var text = token.text
-                return text.length == 38
+                var text = token.text()
+                assert.equal(36, text.length, "lol")
             })
     })
 })

@@ -28,10 +28,11 @@
                 <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
                     <button type="submit" id="edit">Edit Profile</button>
                 </form>
+                <script th:inline="javascript">
+                    var profileUri = /*[[${profile.uri}]]*/
+                </script>
                 <div class="single-use-token">
-                        <form action="javascript:loadSut('single-use-token')">
-                            <button type="submit">CrEaTe SiNgLe UsE tOkEn</button>
-                        </form>
+                    <button onclick="loadSut('.token', profileUri)">Create new Single-Use-Token</button>
                     <span class="token"></span>
                 </div>
             </div>
