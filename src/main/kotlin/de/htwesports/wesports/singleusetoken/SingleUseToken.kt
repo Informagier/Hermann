@@ -9,7 +9,7 @@ import javax.persistence.*
 @Table(name = "single_use_tokens")
 class SingleUseToken( // will be reffered to as SUT, because of reasons
         @ManyToOne
-        @JoinColumn(name = "user", referencedColumnName = "uuid")
+        @JoinColumn(name = "usa", referencedColumnName = "uuid")
         var user: User,
         @Id
         @GeneratedValue(generator = "uuid2")
