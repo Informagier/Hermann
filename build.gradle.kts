@@ -49,6 +49,7 @@ dependencies {
 	implementation("org.webjars:popper.js:1.15.0")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
+	runtimeOnly("org.postgresql:postgresql")
 	testCompile (group = "com.jayway.restassured", name = "rest-assured", version = "2.4.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {

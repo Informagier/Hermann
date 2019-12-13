@@ -13,3 +13,8 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+deploy:
+  provider: heroku
+  api_key:
+    secure: MRu87xv10ga0mSAqDpTma7VtSu/kfCtFxg4bs0DUk5Tmd655ocNUwI78efyOFz2MxN70/o6oQb3X/9krDpYdnEg4RSXr0rCzjJdqs5q4fYpZapAvQ6AcfW4GiZhlWZMXsussCPL7EK3vVP0J20/ejayqbyaMYR+Rjzb8n7Gi90dfWrvK2PwU2rjU5Yk68QPEL3DRLjL6aPoUvqaldjMnv7eY8QxDy7zLRxcG1KP19r0BPcBSqb8q4/GEx7rI9UdcHh1whM4ImYGn7NGRTKVm9KUoEYlrSvZUHKQkIHbFJsSBvxFOVA8NDnhTsNoFaWCLodValWMJjqtEpoMx93cK3LG//EC8gZ+5Q+HVHMyhNOT7Sg7T1Q0/0jDXyeMWNnKTRo0WKLoSExRw8ipjoR32Th4z3FVRgCA4VHCXedFYzFrGSiw/Lh8tx/QkjOobt2pTkjyRWCtFBkqgHTnwvodLtrHju26Dge0+KbDNSQSmg4ac9F++qtKKXkj56RD0lelHLlFDmp+kb+i4Tu99itT7qPqt8izHGau2HGwGE7a/cIGyR1O/yRsIXlruslOsJ8oFJMZmNA5mEV+Mx76i3D2Zq5MENjetF8dCNXoWwTIq5bufxE8ccTnudy8oD/rWJZDqt2Fn7pRzHHXuZpUKQd4xmtWJHD0+PmhIY+7DZbSqUwM=
+  app: htwesports
