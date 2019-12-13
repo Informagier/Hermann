@@ -41,7 +41,7 @@ class EditProfileController(var profileRepository: ProfileRepository) {
             service.saveProfile(profileDto,existingProfile)
         }
         model.addAttribute("profile",existingProfile)
-        return  ModelAndView("profile")
+        return  ModelAndView("redirect:/profiles/${uri}")
     }
 
 }
