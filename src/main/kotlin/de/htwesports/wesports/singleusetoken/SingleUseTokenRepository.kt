@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface SingleUseTokenRepository: JpaRepository<SingleUseToken, String> {
     fun findByToken(token: String) : SingleUseToken?
+    fun findByUser(user: User) : MutableCollection<SingleUseToken>
 }
