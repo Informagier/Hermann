@@ -16,11 +16,11 @@ class CustomMethodSecurityExpressionRoot(authentication: Authentication) : Secur
     fun isOwner(uri: String): Boolean{
         var myUserPrincipal: MyUserPrincipal = principal as MyUserPrincipal
         val userUri = myUserPrincipal.getProfile()?.uri
-        //println("UserUri:$userUri")
         if(userUri == null || userUri != uri){
             return false
         }
-        return true    }
+        return true
+    }
 
 
     override fun setFilterObject(filterObject: Any) {
