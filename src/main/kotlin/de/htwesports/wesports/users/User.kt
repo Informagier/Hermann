@@ -8,7 +8,7 @@ import java.util.Objects
 import javax.persistence.*
 
 @Entity
-@Table(name = "users")
+@Table(name = "user_accounts")
 class User(var email: String = "",
            var password: String = "",
            @OneToOne(cascade = [CascadeType.ALL])
