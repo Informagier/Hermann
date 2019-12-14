@@ -7,6 +7,18 @@ describe('test for profile page', function() {
             url: '/register',
             form: true,
             body: {
+                username: 'LemonCheesecake',
+                email: 'lemon.cheesecake@web.de',
+                password: 'LemonCheesecake123!',
+                matchingPassword: 'LemonCheesecake123!'
+            }
+        })
+
+        cy.request({
+            method: 'POST',
+            url: '/register',
+            form: true,
+            body: {
                 username: 'applePie',
                 email: 'apple.pie@web.de',
                 password: 'applePie2019!',
@@ -25,7 +37,7 @@ describe('test for profile page', function() {
 
         cy.get('.navbar-nav > :nth-child(5) > .nav-link').click();
 
-        cy.get("#edit").click();
+        cy.get('#edit').click();
         cy.get("#game").type("Skyrim").should("have.value", "Skyrim");
         cy.get("#genre").type("rpg").should("have.value", "rpg");
         cy.get("#city").type("Berlin").should("have.value", "Berlin");
@@ -36,6 +48,10 @@ describe('test for profile page', function() {
         cy.get("#cityField").should("have.text", "Berlin");
         cy.get("#hobbyField").should("have.text", "Archery");
 
+
+        cy.get('.navbar-nav > :nth-child(4) > .nav-link').click();
+        cy.contains('#profileButton', 'LemonCheesecake').click()
+        cy.get("#edit").should('not.visible')
 
     })
 })
