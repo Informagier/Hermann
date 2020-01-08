@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head>
+    </title th:text="${group.name}">
+    </script>
+</head>
+<body>
+<main layout:fragment="content">
+    <div class="container group-container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="group-img">
+                    <img th:src="@{../static/images/public/group_default.png}" class="img-responsive" alt="group picture"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="group-head">
+                    <h2 th:text="${group.name}"></h2>
+                </div>
+            </div>
+            <div class="col-md-2" th:if="${has_group_edit_access}">
+                <form th:action="@{/groups/{path}/edit (path=${group.uri})}">
+                    <button type="submit" id="edit">Edit Group</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="group-links">
+                    <p>E-SPORT CLUBS</p>
+                    <a href="">Link to club</a><br/>
+                    <p>Platforms</p>
+                    <a href="">Dummy Steam</a><br/>
+                    <a href="">Dummy Discord</a><br/>
+                    <a href="">Dummy whatever</a><br/>
+                </div>
+            </div>
+            <div class="col-md-9 tab-column">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="group-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="group" aria-selected="false">Calendar</a>
+                    </li>
+                </ul>
+                <div class="tab-content group-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>About Us</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p th:text="${group.about}" class="aboutText">about...</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Active in</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${group.city}" id="cityField">location...</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Games</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${group.game}" id="gameField">games...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="group-tab">
+                        to be implemented
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
