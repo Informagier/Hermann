@@ -16,9 +16,9 @@
                     <div class="card-body">
                         <form action="/groups/new" th:object="${group}" method="POST">
                             <div class="form-group">
-                                <label for="username">Group Name</label>
+                                <label for="name">Group Name</label>
                                 <input class="form-control" id="name" name="name" type="text" th:field="*{name}" required/>
-                            <button type="submit" class="btn btn-primary" id="submitBtn" th:text="#{label.form.submit}">Sign up</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" th:text="#{label.form.submit}">Create Group</button>
                             </div>
                         </form>
                     </div>
