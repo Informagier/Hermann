@@ -2,14 +2,13 @@ package de.htwesports.wesports.groups
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
-import de.htwesports.wesports.roles.Role
 import de.htwesports.wesports.users.User
 import java.util.Objects
 import javax.persistence.*
 
 @Entity
 @Table(name = "groups")
-class Group(@OneToOne(mappedBy="uuid")
+class Group(@ManyToOne
             var owner: User,
             var name: String = "",
             var about: String = "",

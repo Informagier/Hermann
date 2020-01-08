@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head>
+    <title>Create a Group</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <h1 class="h4 text-center" th:text="#{label.form.title}">Create a Group</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/groups/new" th:object="${group}" method="POST">
+                            <div class="form-group">
+                                <label for="username">Group Name</label>
+                                <input class="form-control" id="name" name="name" type="text" th:field="*{name}" required/>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" th:text="#{label.form.submit}">Sign up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
