@@ -15,11 +15,6 @@ class Group(@ManyToOne
             var game: String = "",
             var city: String = "") {
 
-        init {
-            if(!users.contains(owner))
-                users.add(owner)
-        }
-
         @Id
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "uuid2")

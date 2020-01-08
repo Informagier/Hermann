@@ -42,6 +42,7 @@ class ProfileController (
     }
 
     @GetMapping("profiles/{uri}")
+    @PreAuthorize("isAuthenticated()")
     fun goToProfile(@PathVariable("uri") uri: String, model: Model): ModelAndView {
         val profile:Profile? = profileRepository.findByUri(uri)
 

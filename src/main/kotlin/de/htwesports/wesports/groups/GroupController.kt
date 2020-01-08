@@ -26,7 +26,7 @@ class GroupController(
         val group = groupRepository.findByUri(uri)
         return if( group != null) {
             val vars = mapOf("has_group_edit_access" to (SecurityContextHolder.getContext()?.authentication?.name == group.owner.email))
-            model.addAttribute(group)
+            model.addAttribute("group", group)
             ModelAndView("group", vars)
         }else{
             throw ResponseStatusException(HttpStatus.NOT_FOUND, "group not found")
@@ -51,17 +51,20 @@ class GroupController(
             method = [RequestMethod.GET],
             produces = [MediaType.TEXT_HTML_VALUE])
     @PreAuthorize("isAuthenticated()")
-    fun createGroup(model: Model): ModelAndView = ModelAndView("new_group")
+    fun newGroup(model: Model): ModelAndView {
+        model.addAttribute("group", GroupDto())
+        return ModelAndView("new_group")
+    }
 
     @PostMapping("/groups/new")
-    fun new(@Valid @ModelAttribute("group") groupDto: GroupDto, result: BindingResult, model: Model): ModelAndView {
+    @PreAuthorize("isAuthenticated()")
+    fun createGroup(@Valid @ModelAttribute("group") groupDto: GroupDto, result: BindingResult, model: Model): ModelAndView {
         return if (!result.hasErrors()) {
             val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
             val group = groupRepository.save(Group(user, name = groupDto.name))
-            ModelAndView("groups/" + group.uri)
+            ModelAndView("redirect:/groups/" + group.uri)
         } else {
             ModelAndView("redirect:/groups/new")
         }
     }
-
 }
