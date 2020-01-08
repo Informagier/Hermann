@@ -13,7 +13,8 @@ class Group(@OneToOne(mappedBy="uuid")
             var owner: User,
             var name: String = "",
             var about: String = "",
-            var game: String = "") {
+            var game: String = "",
+            var city: String = "") {
 
         init {
             if(!users.contains(owner))
@@ -23,15 +24,16 @@ class Group(@OneToOne(mappedBy="uuid")
         @Id
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "uuid2")
-        var group_uuid: String = UUID.randomUUID().toString()
+        var uuid: String = UUID.randomUUID().toString()
 
+        @Column(unique=true)
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "uuid2")
         var uri: String = UUID.randomUUID().toString()
 
         @ManyToMany
         @JoinTable(name="group_memberships",
-                   joinColumns = [JoinColumn(name = "group_id", referencedColumnName = "group_uuid")],
+                   joinColumns = [JoinColumn(name = "group_id", referencedColumnName = "uuid")],
                    inverseJoinColumns = [JoinColumn(name = "user_id", referencedColumnName = "uuid")])
         lateinit var users: MutableCollection<User>
 
