@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit your Group</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<main layout:fragment="content">
+<div class="container" id="headingCont">
+    <h1>Edit your <span th:text="${group.name}">Group</span></h1>
+</div>
+    <form th:action="@{/groups/{path}(path=${group.uri})}" th:object="$groupdto}" method="POST" enctype="utf8">
+        <div class="form-group">
+            <label for="about">About your Group</label>
+            <input th:field="*{about}" class="form-control" id="about" placeholder="city">
+        </div>
+        <div class="form-group">
+            <label for="game" >Favorite games</label>
+            <input th:field="*{game}" class="form-control" id="game" placeholder="Enter the games of your Group">
+        </div>
+        <div class="form-group">
+            <label for="city">Where is your Group located</label>
+            <input th:field="*{city}" class="form-control" id="city" placeholder="city">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">submit</button>
+    </form>
+</main>
+</body>
+</html>

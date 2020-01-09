@@ -35,7 +35,7 @@ describe('test for profile page', function() {
             }
         })
 
-        cy.get('.navbar-nav > :nth-child(5) > .nav-link').click();
+        cy.get('.navbar-nav > :nth-child(6) > .nav-link').click();
 
         cy.get('#edit').click();
         cy.get("#game").type("Skyrim").should("have.value", "Skyrim");

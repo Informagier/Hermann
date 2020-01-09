@@ -16,8 +16,8 @@
             <a href="/groups/new">Create new Group</a>
         </div>
         <div th:each="group: ${groups}">
-            <form th:action="@{/profiles/{path}(path=${group.uri})}">
-                <button type="submit" id="profileButton" th:text="${group.name}">Group</button>
+            <form th:action="@{/groups/{path}(path=${group.uri})}">
+                <button type="submit" class="groupButton" th:text="${group.name}">Group</button>
             </form>
         </div>
     </div>
