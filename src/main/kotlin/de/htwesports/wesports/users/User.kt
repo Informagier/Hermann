@@ -1,6 +1,7 @@
 package de.htwesports.wesports.users
 
 import de.htwesports.wesports.groups.Group
+import de.htwesports.wesports.posts.Post
 import de.htwesports.wesports.profile.Profile
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
@@ -21,7 +22,8 @@ class User(var email: String = "",
         @GenericGenerator(name = "uuid2", strategy = "uuid2")
         var uuid: String = UUID.randomUUID().toString()
 
-
+        @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], orphanRemoval = true)
+        var posts: MutableList<Post> = ArrayList()
 
         override fun equals(other: Any?): Boolean {
                 if (this === other) return true
