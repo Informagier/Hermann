@@ -23,6 +23,13 @@ body {
     margin: 3% 20% 3% 20%;
     font-size: 1.5em;
 }
+
+.aboutTextGroup {
+    word-break: break-word;
+    color:black;
+    font-size: 1.5em;
+}
+
 .date{
     margin-left: -0.72em;
     margin-top: 2em;
@@ -174,4 +181,111 @@ ol {
 
 #headingCont{
     text-align: center;
+}
+
+.group-container {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    border: solid #ff3300;
+}
+
+.group-container h2 {
+    font-size: 3em;
+}
+
+.group-img img {
+    width: 80%;
+}
+
+.group-edit-btn {
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.group-container {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    border: solid #ff3300;
+}
+
+.group-container h2 {
+    font-size: 3em;
+}
+
+.group-img img {
+    width: 80%;
+}
+
+.group-edit-btn {
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.experience {
+    font-size: 1em;
+    margin-top: 5%;
+    color: #0062cc;
+}
+
+.experience span {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.tab-column .nav-tabs {
+    margin-top: 2%;
+}
+
+.tab-column .nav-tabs .nav-link {
+    font-weight: 600;
+    border: none;
+}
+
+.tab-column .nav-link.active {
+    border: none;
+    border-bottom: 2px solid #0062cc;
+}
+
+.group-links {
+    margin-top: 2%;
+}
+
+.group-links p {
+    font-size: 16px;
+    color: #b3b3b3;
+    font-weight: 600;
+    margin-top: 5%;
+}
+
+.group-links a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.group-tab {
+    margin-top: 2%;
+}
+
+.group-tab label {
+    font-weight: 600;
+}
+
+.group-tab p {
+    font-weight: 600;
+    color: #0062cc;
 }

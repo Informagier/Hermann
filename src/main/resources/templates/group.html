@@ -4,42 +4,36 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/base}">
 <head>
-    <title>Profile</title>
-    <script src="/static/js/sutLoader.js">
-
-    </script>
+    <title th:text="${group.name}"/>
 </head>
 <body>
 <main layout:fragment="content">
-    <div class="container profile-container">
+    <div class="container group-container">
         <div class="row">
             <div class="col-md-4">
-                <div class="profile-img">
-                    <img th:src="@{../static/images/public/profile.png}" class="img-responsive" alt="profile picture"/>
+                <div class="group-img">
+                    <img th:src="@{../static/images/public/group_default.png}" class="img-responsive" alt="group picture"/>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="profile-head">
-                    <h2 th:text="${profile.username}"></h2>
-                    <p class="experience">E-sports Experience : <span>Dragonslayer</span></p>
+                <div class="group-head">
+                    <h2 th:text="${group.name}"></h2>
                 </div>
             </div>
-            <div class="col-md-2" th:if="${is_my_profile}">
-                <form th:action="@{/profiles/{path}/edit (path=${profile.uri})}">
-                    <button type="submit" id="edit">Edit Profile</button>
+            <div class="col-md-2" th:if="${has_group_edit_access}">
+                <form th:action="@{/groups/{path}/edit (path=${group.uri})}">
+                    <button type="submit" id="edit">Edit Group</button>
                 </form>
-                <script th:inline="javascript">
-                    var profileUri = /*[[${profile.uri}]]*/
-                </script>
-                <div class="single-use-token">
-                    <button id="createTokenBtn" onclick="loadSut('.token', profileUri)">Create new Single-Use-Token</button>
-                    <span class="token"></span>
-                </div>
+                <form th:action="@{/groups/{path}/add_user (path=${group.uri})}" method="post">
+                    <label for="token">Group token:</label>
+                    <input id="token" name="token" type="text">
+                    <button type="submit" id="addUserBtn">Add user to group</button>
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-                <div class="profile-links">
+                <div class="group-links">
                     <p>E-SPORT CLUBS</p>
                     <a href="">Link to club</a><br/>
                     <p>Platforms</p>
@@ -54,45 +48,47 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="profile" aria-selected="false">Calendar</a>
+                        <a class="nav-link" id="group-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="group" aria-selected="false">Calendar</a>
                     </li>
                 </ul>
-                <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-content group-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Favorite games</label>
+                                <label>About Us</label>
                             </div>
                             <div class="col-md-6">
-                                <p th:text="${profile.game}" id="gameField"></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Favourite Genre</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p th:text="${profile.genre}" id="genreField">RPG</p>
+                                <p th:text="${group.about}" class="aboutTextGroup">about...</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Lives in</label>
+                                <label>Active in</label>
                             </div>
                             <div class="col-md-6">
-                                <p th:text="${profile.city}" id="cityField">Berlin</p>
+                                <p th:text="${group.city}" id="cityField">location...</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Hobbies</label>
+                                <label>Games</label>
                             </div>
                             <div class="col-md-6">
-                                <p th:text="${profile.hobby}" id="hobbyField">Berlin</p>
+                                <p th:text="${group.game}" id="gameField">games...</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Members</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row" th:each="user: ${group.users}">
+                                    <a th:href="@{/profiles/{uri}(uri=${user.profile.uri})}" th:text="${user.profile.username}"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="group-tab">
                         to be implemented
                     </div>
                 </div>

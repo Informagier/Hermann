@@ -1,5 +1,6 @@
 package de.htwesports.wesports.users
 
+import de.htwesports.wesports.groups.Group
 import de.htwesports.wesports.profile.Profile
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
@@ -43,4 +44,11 @@ class User(var email: String = "",
                 inverseJoinColumns = [JoinColumn(
                         name = "role_id", referencedColumnName = "id")])
         lateinit var roles: MutableCollection<Role>
+
+        @ManyToMany
+        @JoinTable(name="group_memberships",
+                joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "uuid")],
+                inverseJoinColumns = [JoinColumn(name = "group_id", referencedColumnName = "uuid")])
+        lateinit var groups: MutableCollection<Group>
+
 }

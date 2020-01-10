@@ -31,7 +31,7 @@ class SingleUseTokenController(
 
             else -> {
                 val token = sutRepo.save(SingleUseToken(profRepo.findByUri(uri)?.user!!))
-                return ResponseEntity(token.token, HttpStatus.CREATED)
+                return ResponseEntity(token.token!!, HttpStatus.CREATED)
             }
         }
     }
