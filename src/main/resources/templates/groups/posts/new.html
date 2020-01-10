@@ -14,7 +14,7 @@
                 <h1 class="h4 text-center">Create a new post</h1>
                 <div class="card">
                     <div class="card-body">
-                        <form th:action="@{/posts/new}" th:object="${post}" method="POST">
+                        <form th:action="@{/groups/{path}/posts/new (path=${group.uri})}" th:object="${post}" method="POST">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input class="form-control" id="title" name="title" type="text" th:field="*{title}" required/>

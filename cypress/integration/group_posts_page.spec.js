@@ -24,18 +24,35 @@ function login() {
     });
 }
 
-describe("Given a user wants to publish a post", function () {
+function create_group() {
+    cy.request({
+        method: 'POST',
+        url: '/groups/new',
+        form: true,
+        body: {
+            name: 'Test group'
+        }
+    });
+}
+
+describe("Given a user wants to publish a post in a group", function () {
     describe("When filling in all required fields", function () {
-        it("Then should create the post and redirect the user to the post page", function () {
+        it("Then should create the post and redirect the user to the group post page", function () {
             cy.visit('/');
 
             register();
             login();
+            create_group();
 
             cy.visit('/');
             cy.url().should('include', '/');
 
-            cy.get('.navbar-nav > :nth-child(7) > .nav-link').click();
+            cy.get('.navbar-nav > :nth-child(5) > div > .nav-link').click();
+            cy.url().should('include', '/groups');
+
+            cy.get('.groupButton').first().click();
+
+            cy.get('#showPostsBtn').click();
             cy.url().should('include', '/posts');
 
             cy.get('#createPostBtn').click();
@@ -57,18 +74,24 @@ describe("Given a user wants to publish a post", function () {
     });
 });
 
-describe("Given a user wants to edit a post", function () {
+describe("Given a user wants to edit a group post", function () {
     describe("When user is the author", function () {
         it("Then should edit the post and redirect the user to the updated post page", function () {
             cy.visit('/');
 
             register();
             login();
+            create_group();
 
             cy.visit('/');
             cy.url().should('include', '/');
 
-            cy.get('.navbar-nav > :nth-child(7) > .nav-link').click();
+            cy.get('.navbar-nav > :nth-child(5) > div > .nav-link').click();
+            cy.url().should('include', '/groups');
+
+            cy.get('.groupButton').first().click();
+
+            cy.get('#showPostsBtn').click();
             cy.url().should('include', '/posts');
 
             cy.get('.showPostBtn').first().click();
@@ -77,8 +100,8 @@ describe("Given a user wants to edit a post", function () {
             cy.get('#editPostBtn').click();
             cy.url().should('include', '/edit');
 
-            let title = "Test title #2";
-            let content = "Test 123";
+            let title = "Test title 2";
+            let content = "Lorem ipsum 2";
 
             cy.get('#title').clear().type(title).should('have.value', title);
             cy.get('#content').clear().type(content).should('have.value', content);

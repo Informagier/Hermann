@@ -1,5 +1,6 @@
 package de.htwesports.wesports.groups
 
+import de.htwesports.wesports.posts.Post
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
 import de.htwesports.wesports.users.User
@@ -30,6 +31,9 @@ class Group(@ManyToOne
                    joinColumns = [JoinColumn(name = "group_id", referencedColumnName = "uuid")],
                    inverseJoinColumns = [JoinColumn(name = "user_id", referencedColumnName = "uuid")])
         var users: MutableCollection<User> = ArrayList()
+
+        @OneToMany(mappedBy = "group", cascade = [CascadeType.ALL], orphanRemoval = true)
+        var posts: MutableList<Post> = ArrayList()
 
         override fun equals(other: Any?): Boolean {
             return if (this === other){ 

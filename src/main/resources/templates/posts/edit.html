@@ -25,10 +25,6 @@
                                 <input class="form-control" id="content" name="content" type="text" th:field="*{content}" required/>
                                 <div class="alert alert-danger" th:each="error : ${#fields.errors('content')}" th:text="${error}"></div>
                             </div>
-                            <div class="form-group">
-                                <label for="keywords">Keywords</label>
-                                <input class="form-control" id="keywords" name="keywords" type="text" th:field="*{keywords}"/>
-                            </div>
                             <button type="submit" class="btn btn-primary" id="submitBtn">Update post</button>
                         </form>
                     </div>

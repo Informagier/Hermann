@@ -5,7 +5,6 @@ import de.htwesports.wesports.users.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.security.access.prepost.PreAuthorize
-import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -58,7 +57,7 @@ class PostsController(
     @PreAuthorize("isAuthenticated()")
     fun createPost(@ModelAttribute("post") postDto: PostDto, model: Model): ModelAndView {
         val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
-        val post = Post(postDto.title!!, postDto.content!!, user)
+        val post = Post(postDto.title!!, postDto.content!!, user, null)
 
         user.posts.add(post)
         postsRepository.save(post)

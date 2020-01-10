@@ -11,10 +11,10 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-                <h1 class="h4 text-center">Create a new post</h1>
+                <h1 class="h4 text-center">Edit post</h1>
                 <div class="card">
                     <div class="card-body">
-                        <form th:action="@{/posts/new}" th:object="${post}" method="POST">
+                        <form th:action="@{/groups/{group_uri}/posts/{post_id}/edit (group_uri=${group.uri},post_id=${post.id})}" th:object="${post}" method="POST">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input class="form-control" id="title" name="title" type="text" th:field="*{title}" required/>
@@ -25,7 +25,7 @@
                                 <input class="form-control" id="content" name="content" type="text" th:field="*{content}" required/>
                                 <div class="alert alert-danger" th:each="error : ${#fields.errors('content')}" th:text="${error}"></div>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="submitBtn">Create post</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Update post</button>
                         </form>
                     </div>
                 </div>

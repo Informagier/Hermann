@@ -1,5 +1,6 @@
 package de.htwesports.wesports.posts
 
+import de.htwesports.wesports.groups.Group
 import de.htwesports.wesports.users.User
 import java.util.*
 import javax.persistence.*
@@ -10,7 +11,9 @@ class Post(
         var title: String,
         var content: String,
         @ManyToOne
-        var author: User
+        var author: User,
+        @ManyToOne
+        var group: Group?
 ) {
 
     @Id
@@ -23,10 +26,12 @@ class Post(
 
         return title == other.title
                 && content == other.content
+                && author == other.author
+                && group == other.group
                 && id == other.id
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(title, content, id)
+        return Objects.hash(title, content, author, group, id)
     }
 }
