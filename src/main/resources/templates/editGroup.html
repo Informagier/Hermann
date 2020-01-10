@@ -13,10 +13,10 @@
 <div class="container" id="headingCont">
     <h1>Edit your <span th:text="${group.name}">Group</span></h1>
 </div>
-    <form th:action="@{/groups/{path}(path=${group.uri})}" th:object="$groupdto}" method="POST" enctype="utf8">
+    <form th:action="@{/groups/{path}/edit(path=${group.uri})}" th:object="${group}" method="POST" enctype="utf8">
         <div class="form-group">
             <label for="about">About your Group</label>
-            <input th:field="*{about}" class="form-control" id="about" placeholder="city">
+            <input th:field="*{about}" class="form-control" id="about" placeholder="description">
         </div>
         <div class="form-group">
             <label for="game" >Favorite games</label>

@@ -29,7 +29,7 @@ class Group(@ManyToOne
         @JoinTable(name="group_memberships",
                    joinColumns = [JoinColumn(name = "group_id", referencedColumnName = "uuid")],
                    inverseJoinColumns = [JoinColumn(name = "user_id", referencedColumnName = "uuid")])
-        lateinit var users: MutableCollection<User>
+        var users: MutableCollection<User> = ArrayList()
 
         override fun equals(other: Any?): Boolean {
             return if (this === other){ 

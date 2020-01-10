@@ -1,5 +1,6 @@
 package de.htwesports.wesports.groups
 
+import de.htwesports.wesports.singleusetoken.SingleUseTokenRepository
 import de.htwesports.wesports.users.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -16,16 +17,21 @@ import javax.validation.Valid
 @Controller
 class GroupController(
     val groupRepository: GroupRepository,
-    val userRepository: UserRepository
+    val userRepository: UserRepository,
+    val sutRepository: SingleUseTokenRepository
 ){
     @RequestMapping(value = ["groups/{group_uri}"],
             method = [RequestMethod.GET],
             produces = [MediaType.TEXT_HTML_VALUE])
     @PreAuthorize("isAuthenticated()")
     fun showGroup(@PathVariable("group_uri") uri: String, model: Model): ModelAndView {
+        val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
         val group = groupRepository.findByUri(uri)
         return if( group != null) {
-            val vars = mapOf("has_group_edit_access" to (SecurityContextHolder.getContext()?.authentication?.name == group.owner.email))
+            if (!group.users.contains(user))
+                throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "user is not member of the group")
+
+            val vars = mapOf("has_group_edit_access" to (user == group.owner))
             model.addAttribute("group", group)
             ModelAndView("group", vars)
         }else{
@@ -33,20 +39,24 @@ class GroupController(
         }
     }
 
-    @RequestMapping(value = ["groups/{uri}/edit"],
+    @RequestMapping(value = ["groups/{group_uri}/edit"],
             method = [RequestMethod.GET],
             produces = [MediaType.TEXT_HTML_VALUE])
     @PreAuthorize("isAuthenticated()")
     fun showGroupEdit(@PathVariable("group_uri") uri: String, model: Model): ModelAndView {
         val group = groupRepository.findByUri(uri)
         val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
-        return if(group == null){
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "group not found")
-        }else if(user != group.owner){
-            throw ResponseStatusException(HttpStatus.UNAUTHORIZED)
-        }else{
-            model.addAttribute("group", GroupDto())
-            ModelAndView("editGroup")
+        return when {
+            group == null -> {
+                throw ResponseStatusException(HttpStatus.NOT_FOUND, "group not found")
+            }
+            user != group.owner -> {
+                throw ResponseStatusException(HttpStatus.UNAUTHORIZED)
+            }
+            else -> {
+                model.addAttribute("group", GroupDto(group))
+                ModelAndView("editGroup")
+            }
         }
     }
 
@@ -56,11 +66,13 @@ class GroupController(
         return if (!result.hasErrors()) {
             val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
             val group = groupRepository.findByUri(uri) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
-            if(user != group.owner)
+            if (user != group.owner)
                 throw ResponseStatusException(HttpStatus.UNAUTHORIZED)
+            groupDto.editGroup(group)
+            groupRepository.save(group)
             ModelAndView("redirect:/groups/" + group.uri)
         } else {
-            ModelAndView("/groups/" + uri + "/new")
+            ModelAndView("editGroup")
         }
     }
 
@@ -83,5 +95,26 @@ class GroupController(
         } else {
             ModelAndView("redirect:/groups/new")
         }
+    }
+
+    @PostMapping("/groups/{uri}/add_user")
+    @PreAuthorize("isAuthenticated()")
+    fun addUserToGroup(@PathVariable("uri") uri: String, @RequestParam("token") token: String): ModelAndView {
+        val owner = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
+        val group = groupRepository.findByUri(uri)
+                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+
+        if (owner != group.owner)
+            throw ResponseStatusException(HttpStatus.UNAUTHORIZED)
+
+        println(token)
+        val sut = sutRepository.findByToken(token.trim())
+                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        val user = sut.user
+
+        group.users.add(user)
+        groupRepository.save(group)
+
+        return ModelAndView("redirect:/groups/${group.uri}")
     }
 }

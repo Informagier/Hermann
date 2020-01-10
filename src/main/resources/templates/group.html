@@ -24,6 +24,11 @@
                 <form th:action="@{/groups/{path}/edit (path=${group.uri})}">
                     <button type="submit" id="edit">Edit Group</button>
                 </form>
+                <form th:action="@{/groups/{path}/add_user (path=${group.uri})}" method="post">
+                    <label for="token">Group token:</label>
+                    <input id="token" name="token" type="text">
+                    <button type="submit" id="addUserBtn">Add user to group</button>
+                </form>
             </div>
         </div>
         <div class="row">
@@ -49,14 +54,14 @@
                 <div class="tab-content group-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>About Us</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p th:text="${group.about}" class="aboutText">about...</p>
-                                </div>
+                            <div class="col-md-6">
+                                <label>About Us</label>
                             </div>
+                            <div class="col-md-6">
+                                <p th:text="${group.about}" class="aboutTextGroup">about...</p>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <label>Active in</label>
                             </div>
@@ -70,6 +75,16 @@
                             </div>
                             <div class="col-md-6">
                                 <p th:text="${group.game}" id="gameField">games...</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Members</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row" th:each="user: ${group.users}">
+                                    <a th:href="@{/profiles/{uri}(uri=${user.profile.uri})}" th:text="${user.profile.username}"></a>
+                                </div>
                             </div>
                         </div>
                     </div>

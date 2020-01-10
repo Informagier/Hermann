@@ -23,6 +23,13 @@ body {
     margin: 3% 20% 3% 20%;
     font-size: 1.5em;
 }
+
+.aboutTextGroup {
+    word-break: break-word;
+    color:black;
+    font-size: 1.5em;
+}
+
 .date{
     margin-left: -0.72em;
     margin-top: 2em;
