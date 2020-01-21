@@ -13,7 +13,8 @@ class User(var email: String = "",
            var password: String = "",
            @OneToOne(cascade = [CascadeType.ALL])
            @JoinColumn(name = "profile_id", referencedColumnName = "profileid")
-           var profile: Profile? = null) {
+           var profile: Profile? = null,
+           var enabled: Boolean = false) {
 
         @Id
         @GeneratedValue(generator = "uuid2")
