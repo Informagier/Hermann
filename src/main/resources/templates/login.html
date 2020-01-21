@@ -14,8 +14,9 @@
                         <h1 class="h4 text-center">Sign in</h1>
                         <div class="card">
                             <div class="card-body">
-                                <div th:if="${param.error}" class="alert alert-danger">
-                                    Invalid username and password.
+                                <div th:if="${param.error != null}" class="alert alert-danger"
+                                     th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">
+                                    error
                                 </div>
                                 <div th:if="${param.logout}" class="alert alert-success">
                                     You have been logged out.
