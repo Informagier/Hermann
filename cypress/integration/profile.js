@@ -18,6 +18,7 @@ describe('Profile Tests', function() {
     })
     //login
     beforeEach(function() {
+        cy.visit("/enable/profileTestUser@example.com");
         cy.visit('/login');
 
         cy.get("#username").type(email);

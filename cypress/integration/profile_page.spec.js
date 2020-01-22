@@ -13,6 +13,8 @@ describe('test for profile page', function() {
                 matchingPassword: 'LemonCheesecake123!'
             }
         })
+        cy.visit("/enable/lemon.cheesecake@web.de");
+
 
         cy.request({
             method: 'POST',
@@ -25,6 +27,7 @@ describe('test for profile page', function() {
                 matchingPassword: 'applePie2019!'
             }
         })
+        cy.visit("/enable/apple.pie@web.de");
         cy.request({
             method: 'POST',
             url: '/perform_login',

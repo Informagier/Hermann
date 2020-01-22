@@ -2,6 +2,8 @@ package de.htwesports.wesports.users
 
 import de.htwesports.wesports.errors.UserAlreadyExistsException
 import de.htwesports.wesports.profile.Profile
+import de.htwesports.wesports.registrations.VerificationToken
+import de.htwesports.wesports.registrations.VerificationTokenRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional
@@ -15,7 +17,11 @@ class UserServiceImpl : UserService {
     private lateinit var userRepository: UserRepository
 
     @Autowired
+    private lateinit var tokenRepository: VerificationTokenRepository
+
+    @Autowired
     private lateinit var passwordEncoder: PasswordEncoder
+
 
     @Throws(UserAlreadyExistsException::class)
     override fun createUserAccount(accountDto: UserDto): User {
@@ -28,7 +34,29 @@ class UserServiceImpl : UserService {
         return userRepository.save(user)
     }
 
+    override fun createVerificationToken(user: User, token: String) {
+        var myToken = VerificationToken(token, user)
+        tokenRepository.save(myToken)
+    }
+
+    override fun getVerificationToken(verificationToken: String): VerificationToken? {
+        return this.tokenRepository.findByToken(verificationToken)
+    }
+
+    override fun saveRegisteredUser(user: User) {
+        userRepository.save(user)
+    }
+
+    override fun enableUser(email: String) {
+        var user = userRepository.findByEmail(email)
+        if(user!= null) {
+            user.enabled = true
+            userRepository.save(user)
+        }
+    }
+
     private fun emailExists(email: String): Boolean {
         return userRepository.findByEmail(email) != null
     }
+
 }

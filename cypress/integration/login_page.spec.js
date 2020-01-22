@@ -35,8 +35,9 @@ describe("Given a new user wants to register", function() {
 
             cy.get("#submitBtn").click();
 
-            cy.url().should('eq', 'http://localhost:8080/');
+            cy.url().should('eq', 'http://localhost:8080/?succMessage=You+registered+successfully.+We+will+send+you+a+confirmation+message+to+your+email+account.');
 
+            cy.visit("/enable/john.doe@example.com");
             cy.get('.navbar-nav > :nth-child(3) > div > .nav-link').click();
 
             cy.url().should('include', '/login');

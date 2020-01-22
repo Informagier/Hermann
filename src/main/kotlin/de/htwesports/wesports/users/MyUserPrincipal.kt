@@ -15,7 +15,7 @@ class MyUserPrincipal(var user: User) : UserDetails {
     }
 
     override fun isEnabled(): Boolean {
-        return true
+        return this.user.enabled
     }
 
     override fun getUsername(): String {
