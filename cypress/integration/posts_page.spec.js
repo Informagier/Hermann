@@ -10,6 +10,7 @@ function register() {
             matchingPassword: 'Test1234'
         }
     });
+    cy.visit("/enable/test@example.com");
 }
 
 function login() {

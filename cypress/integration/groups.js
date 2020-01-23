@@ -11,6 +11,7 @@ function login(){
             matchingPassword: 'applePie2019!'
         }
     })
+    cy.visit("/enable/tester@example.com");
     cy.request({
         method: 'POST',
         url: '/perform_login',
@@ -34,6 +35,7 @@ function login2() {
             matchingPassword: 'Test1234'
         }
     });
+    cy.visit("/enable/tester2@example.com");
     cy.request({
         method: 'POST',
         url: '/perform_login',

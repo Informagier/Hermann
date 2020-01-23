@@ -13,6 +13,7 @@ function register() {
 }
 
 function login() {
+    cy.visit("/enable/test@example.com");
     cy.request({
         method: 'POST',
         url: '/perform_login',
