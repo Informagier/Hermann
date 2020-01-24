@@ -1,19 +1,20 @@
 env:
   global:
-   - secure: SUEr+rAAMqiMmYyDGWtjbCaRDX6F3wnCQQ0FflTHSwReYxJQzXTNR1GgnhtYQrNNVWw/87W3Mkk/CWioSNsMSYfdrzfIMNjeSom7wgXLL4Ty3df6dLU3iQE8D6H3wfNlMJdZz6Pt+KIvqxJNH9WEI7MuvC/ZQ/Sh4ioCp5k8nM55l4XmFd3/X3jV638qz6wnwNpHfCveD0Ia9/nzXu+FDg98XFw++CaVZ5K3gE8Mzt5De8/4LbtGOJMHRzrkUsNrxmxuGDVoJ/sFyVA2B9oXgCuWF1an7G5DQZHodqy3T56G68g7cdWsR2/GytGuxP7GEUeJf5Qwky5cMkXUNGnKYkw6Mybb5RqeO0g8Lua0kFMApFlbLzlmwDI1CbA+48Y00CrWT/QEij8qMlIbu9Es4iZjdj9fPFZAgca/87IKLCUPErPQY4bFIMAH6Xj5M7NTdSdPnpZs87tdahDjTSomDt5qjeU2GSoF5gUfNldNsyiOsBVzO+KClQv9rfvlvi/46yj5ndeVGSxgK0JC5K71sHhxy1NVXfqCZ4oKPgtaPU2diq6lZEpTTHXED0eIsire/ZXyB3gtQbiKDOkjZst67QGDwSBcQNzdtHt5Yv1do5RCccjnDaniBxquLcNnNRaBCKN6WKhADEpk2wBcyU0/fvDjmtxRgIagdD4jrcNdKAA=
-   - secure: uA67iqQXyt8Z8laTv7rSX/+9XjaoupRL2n5vF5cD1bzwN5+ua7i0d51OqHwzdizC/4qzl4ieaZ56AZtjGi3p+eUi+VEOkxu6DX62LtNHkFnSYMq9OcwTKY5PjgKCmqaDHCZkk0PSABRS1A21ghKCHm28REuvJ1HZHqhEjBVYmy0CF2YPKhNEEmeBkMeRjs6qxdEbDIYRDvkRwK1eiW0D3XcUXen64prJmeZKlqNmGoQf/YmYDvy4/i2wj5AZifreYfwssIk/e9HFIyS8hPQ8QqKnZ8tPOwYsyK/XJLfCg+J3UP43wznG5w3Fkgxy+DJ2KdqyWrZXggi2KMjXrObr6F2bxzWXk7i2/zpRG+oC8KgXbQufyJMV9tVr5HQdqZJ2rnF7gwc9+U0FbDRsfq2JE53Ref4QA2Z6CKsZI+YAuckg0k8e3hM4x+pl3oGj6szhmV0uKp5YausiUB0ECpRpUfvn7jbHAGY3InPH6i/VFMD/u5vM2v5Zyz1MiuVqWHSzxCEAcUB96Gb4Np6WrtK1yYhZt50dafaS0xRvGcp4xSSU3shUJNc0yO6ceRIA7doojexngj0iuzB1vJsvFZpcEXbblMestgKqGwt9Ziovm51OSGgNIRGhUT199BwDj/XvpZEBIYkMQ4v5jBIARHIyW/t/G8vb30nmEUDtZ8bNTDM=
+  - secure: SUEr+rAAMqiMmYyDGWtjbCaRDX6F3wnCQQ0FflTHSwReYxJQzXTNR1GgnhtYQrNNVWw/87W3Mkk/CWioSNsMSYfdrzfIMNjeSom7wgXLL4Ty3df6dLU3iQE8D6H3wfNlMJdZz6Pt+KIvqxJNH9WEI7MuvC/ZQ/Sh4ioCp5k8nM55l4XmFd3/X3jV638qz6wnwNpHfCveD0Ia9/nzXu+FDg98XFw++CaVZ5K3gE8Mzt5De8/4LbtGOJMHRzrkUsNrxmxuGDVoJ/sFyVA2B9oXgCuWF1an7G5DQZHodqy3T56G68g7cdWsR2/GytGuxP7GEUeJf5Qwky5cMkXUNGnKYkw6Mybb5RqeO0g8Lua0kFMApFlbLzlmwDI1CbA+48Y00CrWT/QEij8qMlIbu9Es4iZjdj9fPFZAgca/87IKLCUPErPQY4bFIMAH6Xj5M7NTdSdPnpZs87tdahDjTSomDt5qjeU2GSoF5gUfNldNsyiOsBVzO+KClQv9rfvlvi/46yj5ndeVGSxgK0JC5K71sHhxy1NVXfqCZ4oKPgtaPU2diq6lZEpTTHXED0eIsire/ZXyB3gtQbiKDOkjZst67QGDwSBcQNzdtHt5Yv1do5RCccjnDaniBxquLcNnNRaBCKN6WKhADEpk2wBcyU0/fvDjmtxRgIagdD4jrcNdKAA=
+  - secure: F+DefXPEyxvnVhiBLMP4hLLil+ZmxUpga/3250Rj0HRoYfFWSFp6aSg/ORK6aUdBRr/4g+xYh8ePdQ2e0lnAiXGqwOSLn/CfOhnCXqnJabkTHILhMkskKCC16lYpexGjxssnDwZXKOBgjUIxBzN63ybyXtv7phmvWu90pRn94hTl/T5FFWKjffKNYn/wK5f7ilwRNtmzgxBIvx6x0idawHz6eEd7Aiuokcr/RNoqJ7SkVxewm4YHn3WiruckT1qjeCF+aT6JySk1C9yutTkzh00m8K1lG8DcnOpWn3navMfMc4k7bhnZWZl4oJaZ2T+/3KFgFmw2lsDQzTyygpDDj53/w8xBnliVcIHGwc0rUwOsMJ2QCdenJujj6Y5O5P/gVbMHU7P07gjKqRSSKdx14XJjh8/sOOZDDirnXpNCNDXvGNKW2xH3o8p9HpJrX3nzxz4gyVvkIFm3CFRMIyRV8xlJL65PdanGhZolXG0csigdbIW+Ma+0A74Kr5HFErJBUQMvJksWLaVFvWCOeTh2DRdjB1ZdPHomiyh9UoLp903aYl+j/JbQ2tyi2ZZZZgZuNHHJjQ/u08VN0+fq7snS4LZdtlygIYRzB3jBSgDv9l5OeVc141ciAxyM3AZHDqPJ1PhZc6xjhx3tDyc1gRadcGCykAvSh3iUlKAaTas+ozQ=
 language: java
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - ./gradlew check
-  - ./gradlew jacocoTestReport
+- "./gradlew check"
+- "./gradlew jacocoTestReport"
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 deploy:
   provider: heroku
   api_key:
