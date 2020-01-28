@@ -7,6 +7,24 @@ body {
     background-color: #f9f9f9;
 }
 
+.navbar {
+    background-color: #76B900;
+    color: #AFAFAF;
+}
+
+.nav-item {
+    border : 0.1rem solid rgb(175, 175, 175, 0.3);
+    border-radius: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding : 0, 4rem;
+    margin : 0, 4rem;
+}
+
+.nav-link {
+    color: rgb(199, 199, 199);
+}
+
+
 #about {
     text-align: center;
     border-style: solid;
