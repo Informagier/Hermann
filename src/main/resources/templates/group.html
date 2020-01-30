@@ -21,25 +21,17 @@
                 </div>
             </div>
             <div class="col-md-2" th:if="${has_group_edit_access}">
-                <form th:action="@{/groups/{path}/edit (path=${group.uri})}">
-                    <button type="submit" id="edit">Edit Group</button>
-                </form>
+                <a class="btn" th:href="@{/groups/{path}/edit (path=${group.uri})}" id="edit">Edit Group</a>
                 <form th:action="@{/groups/{path}/add_user (path=${group.uri})}" method="post">
                     <label for="token">Group token:</label>
                     <input id="token" name="token" type="text">
-                    <button type="submit" id="addUserBtn">Add user to group</button>
+                    <button type="submit" id="addUserBtn" class="btn">Add user to group</button>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="group-links">
-                    <p>E-SPORT CLUBS</p>
-                    <a href="">Link to club</a><br/>
-                    <p>Platforms</p>
-                    <a href="">Dummy Steam</a><br/>
-                    <a href="">Dummy Discord</a><br/>
-                    <a href="">Dummy whatever</a><br/>
                     <a th:href="@{/groups/{path}/posts (path=${group.uri})}" id="showPostsBtn">Group posts</a>
                 </div>
             </div>
@@ -47,9 +39,6 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="group-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="group" aria-selected="false">Calendar</a>
                     </li>
                 </ul>
                 <div class="tab-content group-tab" id="myTabContent">

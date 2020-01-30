@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/base}">
 <head>
-    <title>Create new post</title>
+    <title>Edit post</title>
 </head>
 <body>
 <main layout:fragment="content">
@@ -13,10 +13,10 @@
             <div class="col-12 col-sm-10 col-md-8 col-lg-6">
                 <div class="card">
                     <div th:object="${post}" class="card-body">
-                        <h5 class="card-title" th:text="*{title}"></h5>
+                        <h2 class="card-title" th:text="*{title}"></h2>
                         <p class="card-text" th:text="*{content}"></p>
                         <div th:if="${has_post_edit_access}">
-                            <a th:href="@{/posts/{path}/edit (path=${post.id})}" id="editPostBtn">Edit post</a>
+                            <a th:href="@{/posts/{path}/edit (path=${post.id})}" class="edit btn" id="editPostBtn">Edit post</a>
                         </div>
                     </div>
                 </div>

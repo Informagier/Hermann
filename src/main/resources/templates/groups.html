@@ -10,16 +10,15 @@
 </head>
 <body>
 <main layout:fragment="content">
-    <div class="container" id="headingCont">
+    <class="container" id="headingCont">
         <h1>Your Groups</h1>
-        <div>
-            <a href="/groups/new">Create new Group</a>
-        </div>
         <div th:each="group: ${groups}">
-            <form th:action="@{/groups/{path}(path=${group.uri})}">
-                <button type="submit" class="groupButton" th:text="${group.name}">Group</button>
-            </form>
+            <a class="btn" th:text="${group.name}" th:href="@{/groups/{path}(path=${group.uri})}">Gruppe</a> 
         </div>
+    <br/>
+    </div>
+    <div>
+        <a href="/groups/new" class="btn" id="newGroupBtn">Create new Group</a>
     </div>
 </main>
 </body>
