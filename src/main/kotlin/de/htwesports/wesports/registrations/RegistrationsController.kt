@@ -49,6 +49,7 @@ class RegistrationsController(var userService: UserService, var eventPublisher: 
                 eventPublisher.publishEvent(RegistrationCompleteEvent(registered, appUrl))
             }
             catch(e : Exception){
+                e.printStackTrace()
                 return ModelAndView("emailError", "user", accountDto)
 
             }
