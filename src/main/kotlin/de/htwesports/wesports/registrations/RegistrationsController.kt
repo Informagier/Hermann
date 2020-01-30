@@ -4,7 +4,6 @@ import de.htwesports.wesports.errors.UserAlreadyExistsException
 import de.htwesports.wesports.users.User
 import de.htwesports.wesports.users.UserDto
 import de.htwesports.wesports.users.UserService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.ModelAndView
 import java.util.*
+import javax.servlet.http.HttpServletRequest
 import javax.validation.Valid
 
 
@@ -32,7 +32,7 @@ class RegistrationsController(var userService: UserService, var eventPublisher: 
             @Valid @ModelAttribute("user") accountDto: UserDto,
             result: BindingResult,
             model: ModelMap,
-            request: WebRequest): ModelAndView{
+            request: HttpServletRequest): ModelAndView{
         var registered: User? = null
         if (!result.hasErrors()) {
              registered = create(accountDto, result)
@@ -45,7 +45,7 @@ class RegistrationsController(var userService: UserService, var eventPublisher: 
             ModelAndView("register.html")
         } else {
             try{
-                var appUrl = request.contextPath
+                var appUrl = getAppUrl(request)
                 eventPublisher.publishEvent(RegistrationCompleteEvent(registered, appUrl))
             }
             catch(e : Exception){
@@ -93,5 +93,8 @@ class RegistrationsController(var userService: UserService, var eventPublisher: 
         } catch (e: UserAlreadyExistsException) {
             null
         }
+    }
+    private fun getAppUrl(request: HttpServletRequest): String {
+        return "http://" + request.serverName + ":" + request.serverPort + request.contextPath
     }
 }
