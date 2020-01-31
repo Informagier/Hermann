@@ -50,10 +50,7 @@ describe("Given a user wants to publish a post", function () {
 
             cy.get('#submitBtn').click();
 
-            cy.url().should('include', '/posts/');
-
-            cy.get('.card-title').should('have.text', title);
-            cy.get('.card-text').should('have.text', content);
+            cy.url().should('include', '/posts');
         });
     });
 });
@@ -72,9 +69,6 @@ describe("Given a user wants to edit a post", function () {
             cy.get('.navbar-nav > :nth-child(7) > .nav-link').click();
             cy.url().should('include', '/posts');
 
-            cy.get('.showPostBtn').first().click();
-            cy.url().should('include', '/posts/');
-
             cy.get('#editPostBtn').click();
             cy.url().should('include', '/edit');
 
@@ -86,10 +80,7 @@ describe("Given a user wants to edit a post", function () {
 
             cy.get('#submitBtn').click();
 
-            cy.url().should('include', '/posts/');
-
-            cy.get('.card-title').should('have.text', title);
-            cy.get('.card-text').should('have.text', content);
+            cy.url().should('include', '/posts');
         });
     });
 });

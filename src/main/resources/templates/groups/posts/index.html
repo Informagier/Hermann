@@ -4,28 +4,31 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/base}">
 <head>
-    <title>Create new post</title>
+    <title>View group posts</title>
 </head>
 <body>
 <main layout:fragment="content">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-                <h1 class="h4 text-center">See what other gamers find interesting</h1>
+                <h1 class="text-center">See what your group members find interesting</h1>
                 <div th:each="post: ${posts}">
                     <div class="row">
                         <div class="col-md">
                             <div class="card">
                                 <div th:object="${post}" class="card-body">
-                                    <h5 class="card-title" th:text="*{title}"></h5>
+                                    <h2 class="card-title" th:text="*{title}"></h2>
                                     <p class="card-text" th:text="*{content}"></p>
-                                    <a class="showPostBtn" th:href="@{/groups/{group_uri}/posts/{post_id} (group_uri=${group.uri},post_id=${post.id})}">Show post</a>
+                                    <footer class="blockquote-footer">Author: <span th:text="*{author.profile.username}"></span></footer>
+                                    <div th:if="${user} == ${post.author}">
+                                        <a th:href="@{/groups/{group_uri}/posts/{post_id}/edit (group_uri=${group.uri},post_id=${post.id})}" class="edit btn" id="editPostBtn">Edit post</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a th:href="@{/groups/{path}/posts/new (path=${group.uri})}" id="createPostBtn">Create a new post</a>
+                <a th:href="@{/groups/{path}/posts/new (path=${group.uri})}" id="createPostBtn" class="btn">Create a new post</a>
             </div>
         </div>
     </div>

@@ -4,14 +4,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/base}">
 <head>
-    <title>Create new post</title>
+    <title>Edit post</title>
 </head>
 <body>
 <main layout:fragment="content">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-                <h1 class="h4 text-center">Edit post</h1>
+                <h1 class="text-center">Edit post</h1>
                 <div class="card">
                     <div class="card-body">
                         <form th:action="@{/groups/{group_uri}/posts/{post_id}/edit (group_uri=${group.uri},post_id=${post.id})}" th:object="${post}" method="POST">
@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="content">Text</label>
-                                <input class="form-control" id="content" name="content" type="text" th:field="*{content}" required/>
+                                <textarea class="form-control" id="content" name="content" th:field="*{content}" rows="4" required></textarea>
                                 <div class="alert alert-danger" th:each="error : ${#fields.errors('content')}" th:text="${error}"></div>
                             </div>
                             <button type="submit" class="btn btn-primary" id="submitBtn">Update post</button>

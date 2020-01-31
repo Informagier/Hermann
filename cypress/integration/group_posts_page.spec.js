@@ -67,10 +67,7 @@ describe("Given a user wants to publish a post in a group", function () {
 
             cy.get('#submitBtn').click();
 
-            cy.url().should('include', '/posts/');
-
-            cy.get('.card-title').should('have.text', title);
-            cy.get('.card-text').should('have.text', content);
+            cy.url().should('include', '/posts');
         });
     });
 });
@@ -95,9 +92,6 @@ describe("Given a user wants to edit a group post", function () {
             cy.get('#showPostsBtn').click();
             cy.url().should('include', '/posts');
 
-            cy.get('.showPostBtn').first().click();
-            cy.url().should('include', '/posts/');
-
             cy.get('#editPostBtn').click();
             cy.url().should('include', '/edit');
 
@@ -109,10 +103,7 @@ describe("Given a user wants to edit a group post", function () {
 
             cy.get('#submitBtn').click();
 
-            cy.url().should('include', '/posts/');
-
-            cy.get('.card-title').should('have.text', title);
-            cy.get('.card-text').should('have.text', content);
+            cy.url().should('include', '/posts');
         });
     });
 });

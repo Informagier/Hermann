@@ -26,8 +26,11 @@ class PostsController(
 
     @GetMapping("/posts")
     fun showAllPosts(model: Model): ModelAndView {
-        val posts: List<Post> = postsRepository.findAll()
+        val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
+        val posts: List<Post> = postsRepository.findAll().filter { it.group == null }
+
         model.addAttribute("posts", posts)
+        model.addAttribute("user", user)
         return ModelAndView("posts/index")
     }
 
@@ -63,15 +66,19 @@ class PostsController(
         postsRepository.save(post)
 
         model.addAttribute("post", post)
-        return ModelAndView("redirect:/posts/${post.id}")
+        return ModelAndView("redirect:/posts")
     }
 
     @GetMapping("/posts/{id}/edit")
     @PreAuthorize("isAuthenticated()")
     fun editPost(@PathVariable id: Long, model: Model): ModelAndView {
+        val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
         val post: Optional<Post> = postsRepository.findById(id)
 
         if (post.isPresent) {
+            if (user != post.get().author) {
+                throw ResponseStatusException(HttpStatus.FORBIDDEN, "user not author of this post")
+            }
             model.addAttribute("post", PostDto(post.get()))
         } else {
             throw ResponseStatusException(HttpStatus.NOT_FOUND, "post not found")
@@ -100,6 +107,6 @@ class PostsController(
         postsRepository.save(post.get())
 
         model.addAttribute("post", post.get())
-        return ModelAndView("redirect:/posts/${post.get().id}")
+        return ModelAndView("redirect:/posts")
     }
 }

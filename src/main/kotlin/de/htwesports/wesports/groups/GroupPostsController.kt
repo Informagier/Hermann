@@ -31,11 +31,14 @@ class GroupPostsController(
 
     @GetMapping("/groups/{group_uri}/posts")
     fun showAllPosts(@PathVariable group_uri: String, model: Model): ModelAndView {
+        val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
         val group = groupRepository.findByUri(group_uri)
                 ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "group uri not found")
         val posts: List<Post> = postsRepository.findPostsByGroup(group)
+
         model.addAttribute("posts", posts)
         model.addAttribute("group", group)
+        model.addAttribute("user", user)
         return ModelAndView("groups/posts/index")
     }
 
@@ -81,17 +84,21 @@ class GroupPostsController(
 
         model.addAttribute("post", post)
         model.addAttribute("group", group)
-        return ModelAndView("redirect:/groups/${group.uri}/posts/${post.id}")
+        return ModelAndView("redirect:/groups/${group.uri}/posts")
     }
 
     @GetMapping("/groups/{group_uri}/posts/{id}/edit")
     @PreAuthorize("isAuthenticated()")
     fun editPost(@PathVariable group_uri: String, @PathVariable id: Long, model: Model): ModelAndView {
+        val user = userRepository.findByEmail(SecurityContextHolder.getContext()?.authentication?.name!!)!!
         val group = groupRepository.findByUri(group_uri)
                 ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "post not found")
         val post: Optional<Post> = postsRepository.findPostByGroupAndId(group, id)
 
         if (post.isPresent) {
+            if (user != post.get().author) {
+                throw ResponseStatusException(HttpStatus.FORBIDDEN, "user not author of this post")
+            }
             model.addAttribute("post", PostDto(post.get()))
             model.addAttribute("group", group)
         } else {
@@ -124,6 +131,6 @@ class GroupPostsController(
 
         model.addAttribute("post", post.get())
         model.addAttribute("group", group)
-        return ModelAndView("redirect:/groups/${group.uri}/posts/${post.get().id}")
+        return ModelAndView("redirect:/groups/${group.uri}/posts")
     }
 }
